@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier l'OP{% endblock %}
+
+{% block body %}
+    <h1>Modifier l'OP</h1>
+
+    {{ include('projet_mandat/_form.html.twig', {'button_label': 'Mise à jour'}) }}
+
+    <a href="{{ path('projet_mandat_index') }}">retour à la liste</a>
+
+    {{ include('projet_mandat/_delete_form.html.twig') }}
+{% endblock %}

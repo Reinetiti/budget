@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Catservice index{% endblock %}
+
+{% block body %}
+    <h1>Catservice</h1>
+
+    <a href="{{ path('catservice_new') }}" class="btn">Ajouter</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>N°</th>
+                <th>Libelé de la Catégorie de Service</th>
+                <th>Code Libelé de la Catégorie de Service</th>
+                <th>Type Unité</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for catservice in catservices %}
+            <tr>
+                <td>{{ catservice.catid }}</td>
+                <td>{{ catservice.libcat }}</td>
+                <td>{{ catservice.catcode }}</td>
+                <td>{{ catservice.typeid }}</td>
+                <td>
+                    <a href="{{ path('catservice_show', {'catid': catservice.catid}) }}">afficher</a>
+                    <a href="{{ path('catservice_edit', {'catid': catservice.catid}) }}">modifier</a>
+                    <a href="{{ path('catservice_delete', {'catid': catservice.catid}) }}">Supprimer</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    {# <a href="{{ path('catservice_new') }}">Créer un nouveau</a> #}
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Type de budget{% endblock %}
+
+{% block body %}
+    <h1>Type de budget</h1>
+
+    {{ include('typebudget/_form.html.twig') }}
+
+    <a href="{{ path('typebudget_index') }}">retour à la liste</a>
+{% endblock %}

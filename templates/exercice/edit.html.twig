@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier l'Exercice{% endblock %}
+
+{% block body %}
+    <h1>Modifier l'Exercice</h1>
+
+    {{ include('exercice/_form.html.twig', {'button_label': 'Mise à jour'}) }}
+
+    <a href="{{ path('exercice_index') }}">retour à la liste</a>
+
+    {{ include('exercice/_delete_form.html.twig') }}
+{% endblock %}

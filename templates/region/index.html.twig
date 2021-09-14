@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Region index{% endblock %}
+
+{% block body %}
+    <h1>Region index</h1>
+
+    <a href="{{ path('region_new') }}" class="btn">Ajouter</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>N°</th>
+                <th>Libelé de la région</th>
+                <th>Code de la région</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for region in regions %}
+            <tr>
+                <td>{{ region.regionid }}</td>
+                <td>{{ region.libregion }}</td>
+                <td>{{ region.regioncode }}</td>
+                <td>
+                    <a href="{{ path('region_show', {'regionid': region.regionid}) }}">Afficher</a>
+                    <a href="{{ path('region_edit', {'regionid': region.regionid}) }}">Modifier</a>
+                    <a href="{{ path('region_delete', {'regionid': region.regionid}) }}">Supprimer</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    {# <a href="{{ path('region_new') }}">Ajouter</a> #}
+{% endblock %}

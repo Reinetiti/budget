@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Type d'unité{% endblock %}
+
+{% block body %}
+    <h1>Type d'unité</h1>
+
+    {{ include('typeunite/_form.html.twig') }}
+
+    <a href="{{ path('typeunite_index') }}">retour à la liste</a>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier le Type de Budget{% endblock %}
+
+{% block body %}
+    <h1>Modifier le Type de Budget</h1>
+
+    {{ include('typebudget/_form.html.twig', {'button_label': 'Mise à jour'}) }}
+
+    <a href="{{ path('typebudget_index') }}">retour à la liste</a>
+
+    {{ include('typebudget/_delete_form.html.twig') }}
+{% endblock %}

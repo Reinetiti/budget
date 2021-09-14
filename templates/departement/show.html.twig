@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Departement{% endblock %}
+
+{% block body %}
+    <h1>Departement</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>N°</th>
+                <td>{{ departement.depid }}</td>
+            </tr>
+            <tr>
+                <th>Libelé du département</th>
+                <td>{{ departement.libdep }}</td>
+            </tr>
+            <tr>
+                <th>Code du département</th>
+                <td>{{ departement.depcode }}</td>
+            </tr>
+            <tr>
+                <th>Région</th>
+                <td>{{ departement.regionid }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('departement_index') }}">retour à la liste</a>
+
+    <a href="{{ path('departement_edit', {'depid': departement.depid}) }}">modifier</a>
+
+    {{ include('departement/_delete_form.html.twig') }}
+{% endblock %}

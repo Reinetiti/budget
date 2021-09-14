@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouvelle Paragraphe{% endblock %}
+
+{% block body %}
+    <h1>Créer une nouvelle Paragraphe</h1>
+
+    {{ include('paragraphe/_form.html.twig') }}
+
+    <a href="{{ path('paragraphe_index') }}">retour à la liste</a>
+{% endblock %}

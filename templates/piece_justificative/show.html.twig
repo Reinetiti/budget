@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}PieceJustificative{% endblock %}
+
+{% block body %}
+    <h1>PieceJustificative</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>N°</th>
+                <td>{{ piece_justificative.idPiece }}</td>
+            </tr>
+            <tr>
+                <th>Référence</th>
+                <td>{{ piece_justificative.ref }}</td>
+            </tr>
+            <tr>
+                <th>Libelé de la Pièce justificative</th>
+                <td>{{ piece_justificative.libPiece }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{{ piece_justificative.datePiece ? piece_justificative.datePiece|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>N° demande</th>
+                <td>{{ piece_justificative.numDemande }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('piece_justificative_index') }}">retour à la liste</a>
+
+    <a href="{{ path('piece_justificative_edit', {'idPiece': piece_justificative.idPiece}) }}">modifier</a>
+
+    {{ include('piece_justificative/_delete_form.html.twig') }}
+{% endblock %}

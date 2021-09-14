@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Typeunite{% endblock %}
+
+{% block body %}
+    <h1>Typeunite</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>N°</th>
+                <td>{{ typeunite.typeid }}</td>
+            </tr>
+            <tr>
+                <th>Libelé du type d'unité</th>
+                <td>{{ typeunite.libtypeUnite }}</td>
+            </tr>
+            <tr>
+                <th>Code du type d'unité</th>
+                <td>{{ typeunite.typecode }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('typeunite_index') }}">retour à la liste</a>
+
+    <a href="{{ path('typeunite_edit', {'typeid': typeunite.typeid}) }}">edit</a>
+
+    {{ include('typeunite/_delete_form.html.twig') }}
+{% endblock %}

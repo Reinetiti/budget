@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Budgetisation{% endblock %}
+
+{% block body %}
+    <h1>Budgetisation</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ budgetisation.id }}</td>
+            </tr>
+            <tr>
+                <th>Cp</th>
+                <td>{{ budgetisation.cp }}</td>
+            </tr>
+            <tr>
+                <th>Ae</th>
+                <td>{{ budgetisation.ae }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('budgetisation_index') }}" class="btn">retour à la liste</a>
+
+    <a href="{{ path('budgetisation_edit', {'id': budgetisation.id}) }}" class="btn">Modifier</a>
+
+    {{ include('budgetisation/_delete_form.html.twig') }}
+{% endblock %}

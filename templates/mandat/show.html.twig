@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mandat{% endblock %}
+
+{% block body %}
+    <h1>Mandat</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>N°</th>
+                <td>{{ mandat.numMandat }}</td>
+            </tr>
+            <tr>
+                <th>Montant Mandat</th>
+                <td>{{ mandat.montantMandat }}</td>
+            </tr>
+            <tr>
+                <th>N° projet de mandatement</th>
+                <td>{{ mandat.numProjet }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('mandat_index') }}">retour à la liste</a>
+
+    <a href="{{ path('mandat_edit', {'numMandat': mandat.numMandat}) }}">modifier</a>
+
+    {{ include('mandat/_delete_form.html.twig') }}
+{% endblock %}

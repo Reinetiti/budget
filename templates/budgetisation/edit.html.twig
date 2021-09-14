@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Budgetisation{% endblock %}
+
+{% block body %}
+    <h1>Edit Budgetisation</h1>
+
+    {{ include('budgetisation/_form.html.twig', {'button_label': 'Mise à jour'}) }}
+
+    <a href="{{ path('budgetisation_index') }}" class="btn">retour à la liste</a>
+
+    {{ include('budgetisation/_delete_form.html.twig') }}
+{% endblock %}

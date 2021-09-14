@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Unité Adminitrative{% endblock %}
+
+{% block body %}
+    <h1>Créer une nouvelle Unité Adminitrative</h1>
+
+    {{ include('uniteadmin/_form.html.twig') }}
+
+    <a href="{{ path('uniteadmin_index') }}">retour à la liste</a>
+{% endblock %}

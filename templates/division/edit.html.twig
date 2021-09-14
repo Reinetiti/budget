@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier la Division{% endblock %}
+
+{% block body %}
+    <h1>Modifier la Division</h1>
+
+    {{ include('division/_form.html.twig', {'button_label': 'Mise à jour'}) }}
+
+    <a href="{{ path('division_index') }}">retour à la liste</a>
+
+    {{ include('division/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Champcompetence{% endblock %}
+
+{% block body %}
+    <h1>Edit Champcompetence</h1>
+
+    {{ include('champcompetence/_form.html.twig', {'button_label': 'Mise à jour'}) }}
+
+    <a href="{{ path('champcompetence_index') }}">retour à la liste</a>
+
+    {{ include('champcompetence/_delete_form.html.twig') }}
+{% endblock %}

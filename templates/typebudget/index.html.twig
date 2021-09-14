@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Typebudget index{% endblock %}
+
+{% block body %}
+    <h1>Typebudget index</h1>
+
+    <a href="{{ path('typebudget_new') }}" class="btn">Ajouter</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>N°</th>
+                <th>Libelé du Type de budget</th>
+                <th>Code du Type de budget</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for typebudget in typebudgets %}
+            <tr>
+                <td>{{ typebudget.typebudgetid }}</td>
+                <td>{{ typebudget.libtypebudget }}</td>
+                <td>{{ typebudget.typebudgetcode }}</td>
+                <td>
+                    <a href="{{ path('typebudget_show', {'typebudgetid': typebudget.typebudgetid}) }}">Afficher</a>
+                    <a href="{{ path('typebudget_edit', {'typebudgetid': typebudget.typebudgetid}) }}">Modifier</a>
+                    <a href="{{ path('typebudget_delete', {'typebudgetid': typebudget.typebudgetid}) }}">Supprimer</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    {# <a href="{{ path('typebudget_new') }}">Ajouter</a> #}
+{% endblock %}

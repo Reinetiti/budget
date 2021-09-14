@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Commune{% endblock %}
+
+{% block body %}
+    <h1>Commune</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>N°</th>
+                <td>{{ commune.communeid }}</td>
+            </tr>
+            <tr>
+                <th>Libelé de la commune</th>
+                <td>{{ commune.libcommune }}</td>
+            </tr>
+            <tr>
+                <th>Code de la commune</th>
+                <td>{{ commune.communecode }}</td>
+            </tr>
+            <tr>
+                <th>Département</th>
+                <td>{{ commune.depid }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('commune_index') }}">retour à la liste</a>
+
+    <a href="{{ path('commune_edit', {'communeid': commune.communeid}) }}">modifier</a>
+
+    {{ include('commune/_delete_form.html.twig') }}
+{% endblock %}

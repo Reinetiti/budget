@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier le Type de programme{% endblock %}
+
+{% block body %}
+    <h1>Modifier le Type de programme</h1>
+
+    {{ include('typepgram/_form.html.twig', {'button_label': 'Mise à jour'}) }}
+
+    <a href="{{ path('typepgram_index') }}">retour à la liste</a>
+
+    {{ include('typepgram/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Unité Adminitrative{% endblock %}
+
+{% block body %}
+    <h1>Unité Adminitrative</h1>
+
+    <a href="{{ path('uniteadmin_new') }}" class="btn">Ajouter</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>N°</th>
+                <th>Libelé de l'Unité Adminitrative</th>
+                <th>Code de l'Unité Adminitrative</th>
+                <th>Type Unité</th>
+                <th>Type de Service</th>
+                <th>Commune</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for uniteadmin in uniteadmins %}
+            <tr>
+                <td>{{ uniteadmin.uniteid }}</td>
+                <td>{{ uniteadmin.libunite }}</td>
+                <td>{{ uniteadmin.unitecode }}</td>
+                <td>{{ uniteadmin.typeid }}</td>
+                <td>{{ uniteadmin.serviceid }}</td>
+                <td>{{ uniteadmin.communeid }}</td>
+                <td>
+                    <a href="{{ path('uniteadmin_show', {'uniteid': uniteadmin.uniteid}) }}">Afficher</a>
+                    <a href="{{ path('uniteadmin_edit', {'uniteid': uniteadmin.uniteid}) }}">Modifier</a>
+                    <a href="{{ path('uniteadmin_delete', {'uniteid': uniteadmin.uniteid}) }}">Supprimer</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    {# <a href="{{ path('uniteadmin_new') }}">Ajouter</a> #}
+{% endblock %}

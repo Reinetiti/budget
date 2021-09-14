@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Engagement{% endblock %}
+
+{% block body %}
+    <h1>Engagement</h1>
+
+    <a href="{{ path('engagement_new') }}" class="btn">Ajouter</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>N°</th>
+                <th>Montant</th>
+                <th>N° demande</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for engagement in engagements %}
+            <tr>
+                <td>{{ engagement.numEngagement }}</td>
+                <td>{{ engagement.montant }}</td>
+                <td>{{ engagement.numDemande }}</td>
+                <td>
+                    <a href="{{ path('engagement_show', {'numEngagement': engagement.numEngagement}) }}">Afficher</a>
+                    <a href="{{ path('engagement_edit', {'numEngagement': engagement.numEngagement}) }}">Modifier</a>
+                    <a href="{{ path('engagement_delete', {'numEngagement': engagement.numEngagement}) }}">Supprimer</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    {# <a href="{{ path('engagement_new') }}">Ajouter</a> #}
+{% endblock %}

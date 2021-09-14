@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Champcompetence index{% endblock %}
+
+{% block body %}
+    <h1>Champcompetence index</h1>
+
+    <a href="{{ path('champcompetence_new') }}" class="btn">Ajouter</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>N°</th>
+                <th>Libelé du champ de compétence</th>
+                <th>Code du champ de compétence</th>
+                <th>Commune</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for champcompetence in champcompetences %}
+            <tr>
+                <td>{{ champcompetence.competenceid }}</td>
+                <td>{{ champcompetence.libcompetence }}</td>
+                <td>{{ champcompetence.competencecode }}</td>
+                <td>{{ champcompetence.communeid }}</td>
+                <td>
+                    <a href="{{ path('champcompetence_show', {'competenceid': champcompetence.competenceid}) }}">Afficher</a>
+                    <a href="{{ path('champcompetence_edit', {'competenceid': champcompetence.competenceid}) }}">Modifier</a>
+                    <a href="{{ path('champcompetence_delete', {'competenceid': champcompetence.competenceid}) }}">Supprimer</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    {# <a href="{{ path('champcompetence_new') }}">Créer un nouveau</a> #}
+{% endblock %}

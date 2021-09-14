@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Typeservice index{% endblock %}
+
+{% block body %}
+    <h1>Typeservice index</h1>
+
+    <a href="{{ path('typeservice_new') }}" class="btn">Ajouter</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>N°</th>
+                <th>Libelé du service</th>
+                <th>Code du service</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for typeservice in typeservices %}
+            <tr>
+                <td>{{ typeservice.serviceid }}</td>
+                <td>{{ typeservice.libservice }}</td>
+                <td>{{ typeservice.servicecode }}</td>
+                <td>
+                    <a href="{{ path('typeservice_show', {'serviceid': typeservice.serviceid}) }}">Afficher</a>
+                    <a href="{{ path('typeservice_edit', {'serviceid': typeservice.serviceid}) }}">Modifier</a>
+                    <a href="{{ path('typeservice_delete', {'serviceid': typeservice.serviceid}) }}">Supprimer</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    {# <a href="{{ path('typeservice_new') }}">Ajouter</a> #}
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Programme index{% endblock %}
+
+{% block body %}
+    <h1>Programme index</h1>
+
+    <a href="{{ path('programme_new') }}" class="btn">Ajouter</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>N°</th>
+                <th>Libelé du programme</th>
+                <th>Code du programme</th>
+                <th>Mission budgetaire</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for programme in programmes %}
+            <tr>
+                <td>{{ programme.programmeid }}</td>
+                <td>{{ programme.libprogramme }}</td>
+                <td>{{ programme.programmecode }}</td>
+                <td>{{ programme.misbudgetid }}</td>
+                <td>
+                    <a href="{{ path('programme_show', {'programmeid': programme.programmeid}) }}">Afficher</a>
+                    <a href="{{ path('programme_edit', {'programmeid': programme.programmeid}) }}">Modifier</a>
+                    <a href="{{ path('programme_delete', {'programmeid': programme.programmeid}) }}">Supprimer</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    {# <a href="{{ path('programme_new') }}">Créer un nouveau</a> #}
+{% endblock %}

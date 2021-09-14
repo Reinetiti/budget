@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Exercice{% endblock %}
+
+{% block body %}
+    <h1>Exercice</h1>
+
+    {{ include('exercice/_form.html.twig') }}
+
+    <a href="{{ path('exercice_index') }}">retour à la liste</a>
+{% endblock %}

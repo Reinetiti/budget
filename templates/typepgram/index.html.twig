@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Type de programme{% endblock %}
+
+{% block body %}
+    <h1>Type de programme</h1>
+
+    <a href="{{ path('typepgram_new') }}" class="btn">Ajouter</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>N°</th>
+                <th>Libelé du type de programme</th>
+                <th>Code du type de programme</th>
+                <th>Programme</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for typepgram in typepgrams %}
+            <tr>
+                <td>{{ typepgram.typepgramid }}</td>
+                <td>{{ typepgram.libtypepgram }}</td>
+                <td>{{ typepgram.typepgramcode }}</td>
+                <td>{{ typepgram.programmeid }}</td>
+                <td>
+                    <a href="{{ path('typepgram_show', {'typepgramid': typepgram.typepgramid}) }}">Afficher</a>
+                    <a href="{{ path('typepgram_edit', {'typepgramid': typepgram.typepgramid}) }}">Modifier</a>
+                    <a href="{{ path('typepgram_delete', {'typepgramid': typepgram.typepgramid}) }}">Supprimer</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    {# <a href="{{ path('typepgram_new') }}">Ajouter</a> #}
+{% endblock %}

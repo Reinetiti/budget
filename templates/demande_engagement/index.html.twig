@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}DemandeEngagement index{% endblock %}
+
+{% block body %}
+    <h1>DemandeEngagement index</h1>
+
+    <a href="{{ path('demande_engagement_new') }}" class="btn">Ajouter</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>N°</th>
+                <th>Date de la Demande</th>
+                <th>Objet de la demande</th>
+                <th>Montant Total</th>
+                <th>Imputation</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for demande_engagement in demande_engagements %}
+            <tr>
+                <td>{{ demande_engagement.numDemande }}</td>
+                <td>{{ demande_engagement.dateDemande ? demande_engagement.dateDemande|date('Y-m-d') : '' }}</td>
+                <td>{{ demande_engagement.objet }}</td>
+                <td>{{ demande_engagement.montantTotal }}</td>
+                <td>{{ demande_engagement.id }}</td>
+                <td>
+                    <a href="{{ path('demande_engagement_show', {'numDemande': demande_engagement.numDemande}) }}">Afficher</a>
+                    <a href="{{ path('demande_engagement_edit', {'numDemande': demande_engagement.numDemande}) }}">Modifier</a>
+                    <a href="{{ path('demande_engagement_delete', {'numDemande': demande_engagement.numDemande}) }}">Supprimer</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    {# <a href="{{ path('demande_engagement_new') }}">Créer un nouveau</a> #}
+{% endblock %}

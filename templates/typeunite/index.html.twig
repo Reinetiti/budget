@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Type d'unité{% endblock %}
+
+{% block body %}
+    <h1>Type d'unité</h1>
+
+    <a href="{{ path('typeunite_new') }}" class="btn">Ajouter</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>N°</th>
+                <th>Libelé du type d'unité</th>
+                <th>Code du type d'unité</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for typeunite in typeunites %}
+            <tr>
+                <td>{{ typeunite.typeid }}</td>
+                <td>{{ typeunite.libtypeUnite }}</td>
+                <td>{{ typeunite.typecode }}</td>
+                <td>
+                    <a href="{{ path('typeunite_show', {'typeid': typeunite.typeid}) }}">Afficher</a>
+                    <a href="{{ path('typeunite_edit', {'typeid': typeunite.typeid}) }}">Modifier</a>
+                    <a href="{{ path('typeunite_edit', {'typeid': typeunite.typeid}) }}">Supprimer</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    {# <a href="{{ path('typeunite_new') }}">Ajouter</a> #}
+{% endblock %}

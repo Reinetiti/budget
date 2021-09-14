@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier l'Unité Administrative{% endblock %}
+
+{% block body %}
+    <h1>Modifier l'Unité Administrative</h1>
+
+    {{ include('uniteadmin/_form.html.twig', {'button_label': 'Mise à jour'}) }}
+
+    <a href="{{ path('uniteadmin_index') }}">retour à la liste</a>
+
+    {{ include('uniteadmin/_delete_form.html.twig') }}
+{% endblock %}

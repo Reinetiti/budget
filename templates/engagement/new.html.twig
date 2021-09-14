@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouveau Engagement{% endblock %}
+
+{% block body %}
+    <h1>Créer une nouveau Engagement</h1>
+
+    {{ include('engagement/_form.html.twig') }}
+
+    <a href="{{ path('engagement_index') }}">retour à la liste</a>
+{% endblock %}

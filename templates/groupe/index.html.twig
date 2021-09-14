@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Groupe{% endblock %}
+
+{% block body %}
+    <h1>Groupe</h1>
+
+    <a href="{{ path('groupe_new') }}" class="btn">Ajouter</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>N°</th>
+                <th>Libelé du groupe</th>
+                <th>Code du groupe</th>
+                <th>Division</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for groupe in groupes %}
+            <tr>
+                <td>{{ groupe.groupeid }}</td>
+                <td>{{ groupe.libgroupe }}</td>
+                <td>{{ groupe.groupecode }}</td>
+                <td>{{ groupe.divisionid }}</td>
+                <td>
+                    <a href="{{ path('groupe_show', {'groupeid': groupe.groupeid}) }}">Afficher</a>
+                    <a href="{{ path('groupe_edit', {'groupeid': groupe.groupeid}) }}">Modifier</a>
+                    <a href="{{ path('groupe_delete', {'groupeid': groupe.groupeid}) }}">Supprimer</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    {# <a href="{{ path('groupe_new') }}">Ajouter</a> #}
+{% endblock %}

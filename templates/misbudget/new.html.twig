@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouvelle Misbudget{% endblock %}
+
+{% block body %}
+    <h1>Créer une nouvelle Mission Budgetaire</h1>
+
+    {{ include('misbudget/_form.html.twig') }}
+
+    <a href="{{ path('misbudget_index') }}">retour à la liste</a>
+{% endblock %}

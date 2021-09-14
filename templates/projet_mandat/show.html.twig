@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ProjetMandat{% endblock %}
+
+{% block body %}
+    <h1>ProjetMandat</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>N°</th>
+                <td>{{ projet_mandat.numProjet }}</td>
+            </tr>
+            <tr>
+                <th>Date du projet de mandatement</th>
+                <td>{{ projet_mandat.dateProjet ? projet_mandat.dateProjet|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Objet du Projet</th>
+                <td>{{ projet_mandat.objetProjet }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('projet_mandat_index') }}">retour à la liste</a>
+
+    <a href="{{ path('projet_mandat_edit', {'numProjet': projet_mandat.numProjet}) }}">modifier</a>
+
+    {{ include('projet_mandat/_delete_form.html.twig') }}
+{% endblock %}

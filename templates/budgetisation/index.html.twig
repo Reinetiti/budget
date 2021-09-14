@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Budgetisation index{% endblock %}
+
+{% block body %}
+    <h1>Budgetisation</h1>
+
+    <a href="{{ path('budgetisation_new') }}" class="btn">Ajouter</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Imputation</th>
+                <th>Crédit de paiement</th>
+                <th>Autorisation d'engagement</th>
+                <th>Rubrique</th>
+                <th>Unité Administrative</th>
+                <th>Action</th>
+                <th>Type de budget</th>
+                <th>Exercice</th>
+                <th>Classe</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for budgetisation in budgetisations %}
+            <tr>
+                <td>{{ budgetisation.id }}</td>
+                <td>{{ budgetisation.cp }}</td>
+                <td>{{ budgetisation.ae }}</td>
+                <td>{{ budgetisation.rubriqueid }}</td>
+                <td>{{ budgetisation.uniteid }}</td>
+                <td>{{ budgetisation.actionid }}</td>
+                <td>{{ budgetisation.typebudgetid }}</td>
+                <td>{{ budgetisation.annee }}</td>
+                <td>{{ budgetisation.classeid }}</td>
+                <td>
+                    <a href="{{ path('budgetisation_show', {'id': budgetisation.id}) }}">Afficher</a>
+                    <a href="{{ path('budgetisation_edit', {'id': budgetisation.id}) }}">Modifier</a>
+                    <a href="{{ path('budgetisation_delete', {'id': budgetisation.id}) }}">Supprimer</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    {# <a href="{{ path('budgetisation_new') }}">Create new</a> #}
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier la Mission Budgetaire{% endblock %}
+
+{% block body %}
+    <h1>Modifier la Mission Budgetaire</h1>
+
+    {{ include('misbudget/_form.html.twig', {'button_label': 'Mise à jour'}) }}
+
+    <a href="{{ path('misbudget_index') }}">retour à la liste</a>
+
+    {{ include('misbudget/_delete_form.html.twig') }}
+{% endblock %}

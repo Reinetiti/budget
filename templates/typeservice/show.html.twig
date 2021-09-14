@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Typeservice{% endblock %}
+
+{% block body %}
+    <h1>Typeservice</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>N°</th>
+                <td>{{ typeservice.serviceid }}</td>
+            </tr>
+            <tr>
+                <th>Libelé du service</th>
+                <td>{{ typeservice.libservice }}</td>
+            </tr>
+            <tr>
+                <th>Code du service</th>
+                <td>{{ typeservice.servicecode }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('typeservice_index') }}">retour à la liste</a>
+
+    <a href="{{ path('typeservice_edit', {'serviceid': typeservice.serviceid}) }}">modifier</a>
+
+    {{ include('typeservice/_delete_form.html.twig') }}
+{% endblock %}

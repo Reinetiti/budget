@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouveau Mandat{% endblock %}
+
+{% block body %}
+    <h1>Créer un nouveau Mandat</h1>
+
+    {{ include('mandat/_form.html.twig') }}
+
+    <a href="{{ path('mandat_index') }}">retour à la liste</a>
+{% endblock %}

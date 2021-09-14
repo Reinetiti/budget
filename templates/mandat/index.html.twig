@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mandat{% endblock %}
+
+{% block body %}
+    <h1>Mandat</h1>
+
+    <a href="{{ path('mandat_new') }}" class="btn">Ajouter</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>N°</th>
+                <th>Montant Mandat</th>
+                <th>N° projet de mandatement</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for mandat in mandats %}
+            <tr>
+                <td>{{ mandat.numMandat }}</td>
+                <td>{{ mandat.montantMandat }}</td>
+                <td>{{ mandat.numProjet }}</td>
+                <td>
+                    <a href="{{ path('mandat_show', {'numMandat': mandat.numMandat}) }}">Afficher</a>
+                    <a href="{{ path('mandat_edit', {'numMandat': mandat.numMandat}) }}">Modifier</a>
+                    <a href="{{ path('mandat_delete', {'numMandat': mandat.numMandat}) }}">Supprimer</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    {# <a href="{{ path('mandat_new') }}">Ajouter</a> #}
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Département{% endblock %}
+
+{% block body %}
+    <h1>Département</h1>
+
+    <a href="{{ path('departement_new') }}" class="btn">Ajouter</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>N°</th>
+                <th>Libelé du département</th>
+                <th>Code du département</th>
+                <th>Région</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for departement in departements %}
+            <tr>
+                <td>{{ departement.depid }}</td>
+                <td>{{ departement.libdep }}</td>
+                <td>{{ departement.depcode }}</td>
+                <td>{{ departement.regionid }}</td>
+                <td>
+                    <a href="{{ path('departement_show', {'depid': departement.depid}) }}">Afficher</a>
+                    <a href="{{ path('departement_edit', {'depid': departement.depid}) }}">Modifier</a>
+                    <a href="{{ path('departement_delete', {'depid': departement.depid}) }}">Supprimer</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    {# <a href="{{ path('departement_new') }}">Créer un nouveau</a> #}
+{% endblock %}

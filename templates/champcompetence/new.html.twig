@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouvelle champ de compétence{% endblock %}
+
+{% block body %}
+    <h1>Créer une nouvelle champ de compétence</h1>
+
+    {{ include('champcompetence/_form.html.twig') }}
+
+    <a href="{{ path('champcompetence_index') }}">retour à la liste</a>
+{% endblock %}

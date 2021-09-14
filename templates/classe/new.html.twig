@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouvelle Classe{% endblock %}
+
+{% block body %}
+    <h1>Créer une nouvelle Classe</h1>
+
+    {{ include('classe/_form.html.twig') }}
+
+    <a href="{{ path('classe_index') }}">retour à la liste</a>
+{% endblock %}

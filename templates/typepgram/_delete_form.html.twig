@@ -1,0 +1,4 @@
+<form method="post" action="{{ path('typepgram_delete', {'typepgramid': typepgram.typepgramid}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ typepgram.typepgramid) }}">
+    <button class="btn">Supprimer</button>
+</form>

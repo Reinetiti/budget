@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouvelle Rubrique{% endblock %}
+
+{% block body %}
+    <h1>Créer une nouvelle Rubrique</h1>
+
+    {{ include('rubrique/_form.html.twig') }}
+
+    <a href="{{ path('rubrique_index') }}">retour à la liste</a>
+{% endblock %}

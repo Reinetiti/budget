@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}PieceJustificative index{% endblock %}
+
+{% block body %}
+    <h1>PieceJustificative index</h1>
+
+    <a href="{{ path('piece_justificative_new') }}" class="btn">Ajouter</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>N°</th>
+                <th>Référence</th>
+                <th>Libelé de la Pièce justificative</th>
+                <th>Date</th>
+                <th>N° demande</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for piece_justificative in piece_justificatives %}
+            <tr>
+                <td>{{ piece_justificative.idPiece }}</td>
+                <td>{{ piece_justificative.ref }}</td>
+                <td>{{ piece_justificative.libPiece }}</td>
+                <td>{{ piece_justificative.datePiece ? piece_justificative.datePiece|date('Y-m-d') : '' }}</td>
+                <td>{{ piece_justificative.numDemande }}</td>
+                <td>
+                    <a href="{{ path('piece_justificative_show', {'idPiece': piece_justificative.idPiece}) }}">Afficher</a>
+                    <a href="{{ path('piece_justificative_edit', {'idPiece': piece_justificative.idPiece}) }}">Modifier</a>
+                    <a href="{{ path('piece_justificative_delete', {'idPiece': piece_justificative.idPiece}) }}">Supprimer</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    {# <a href="{{ path('piece_justificative_new') }}">Créer un nouveau</a> #}
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Pièce Justificative{% endblock %}
+
+{% block body %}
+    <h1>Pièce Justificative</h1>
+
+    {{ include('piece_justificative/_form.html.twig') }}
+
+    <a href="{{ path('piece_justificative_index') }}">retour à la liste</a>
+{% endblock %}

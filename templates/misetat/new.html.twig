@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouvelle Misetat{% endblock %}
+
+{% block body %}
+    <h1>Créer une nouvelle Mission Etat</h1>
+
+    {{ include('misetat/_form.html.twig') }}
+
+    <a href="{{ path('misetat_index') }}">retour à la liste</a>
+{% endblock %}

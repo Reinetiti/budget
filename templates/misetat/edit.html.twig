@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier la Mission d'Etat{% endblock %}
+
+{% block body %}
+    {# <h1>Modifier la Mission d'Etat</h1> #}
+
+<div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <h1>Modifier la Mission d'Etat</h1>
+            </div>
+        </div>
+    {{ include('misetat/_form.html.twig', {'button_label': 'Mise à jour'}) }}
+
+    <a href="{{ path('misetat_index') }}">retour à la liste</a>
+
+    {{ include('misetat/_delete_form.html.twig') }}
+</div>
+{% endblock %}
+

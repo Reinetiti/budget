@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouvelle Division{% endblock %}
+
+{% block body %}
+    <h1>Créer une nouvelle Division</h1>
+
+    {{ include('division/_form.html.twig') }}
+
+    <a href="{{ path('division_index') }}">retour à la liste</a>
+{% endblock %}

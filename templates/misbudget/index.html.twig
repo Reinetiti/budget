@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mission Budgetaire{% endblock %}
+
+{% block body %}
+    <h1>Mission Budgetaire</h1>
+
+    <a href="{{ path('misbudget_new') }}" class="btn">Ajouter</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>N°</th>
+                <th>Libelé de la mission budgetaire</th>
+                <th>Code de la mission budgetaire</th>
+                <th>Mission budgetaire</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for misbudget in misbudgets %}
+            <tr>
+                <td>{{ misbudget.misbudgetid }}</td>
+                <td>{{ misbudget.libmisbudget }}</td>
+                <td>{{ misbudget.misbudgetcode }}</td>
+                <td>{{ misbudget.misetatid }}</td>
+                <td>
+                    <a href="{{ path('misbudget_show', {'misbudgetid': misbudget.misbudgetid}) }}">Afficher</a>
+                    <a href="{{ path('misbudget_edit', {'misbudgetid': misbudget.misbudgetid}) }}">Modifier</a>
+                    <a href="{{ path('misbudget_delete', {'misbudgetid': misbudget.misbudgetid}) }}">Supprimer</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    {# <a href="{{ path('misbudget_new') }}">Ajouter</a> #}
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Typebudget{% endblock %}
+
+{% block body %}
+    <h1>Typebudget</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>N°</th>
+                <td>{{ typebudget.typebudgetid }}</td>
+            </tr>
+            <tr>
+                <th>Libelé du Type de budget</th>
+                <td>{{ typebudget.libtypebudget }}</td>
+            </tr>
+            <tr>
+                <th>Code du Type de budget</th>
+                <td>{{ typebudget.typebudgetcode }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('typebudget_index') }}">retour à la liste</a>
+
+    <a href="{{ path('typebudget_edit', {'typebudgetid': typebudget.typebudgetid}) }}">modifier</a>
+
+    {{ include('typebudget/_delete_form.html.twig') }}
+{% endblock %}

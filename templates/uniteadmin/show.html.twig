@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Uniteadmin{% endblock %}
+
+{% block body %}
+    <h1>Uniteadmin</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>N°</th>
+                <td>{{ uniteadmin.uniteid }}</td>
+            </tr>
+            <tr>
+                <th>Libelé de l'Unité Adminitrative</th>
+                <td>{{ uniteadmin.libunite }}</td>
+            </tr>
+            <tr>
+                <th>Code de l'Unité Adminitrative</th>
+                <td>{{ uniteadmin.unitecode }}</td>
+            </tr>
+            <tr>
+                <th>Type Unité</th>
+                <td>{{ uniteadmin.typeid }}</td>
+            </tr>
+            <tr>
+                <th>Type de Service</th>
+                <td>{{ uniteadmin.serviceid }}</td>
+            </tr>
+            <tr>
+                <th>Commune</th>
+                <td>{{ uniteadmin.communeid }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('uniteadmin_index') }}">retour à la liste</a>
+
+    <a href="{{ path('uniteadmin_edit', {'uniteid': uniteadmin.uniteid}) }}">modifier</a>
+
+    {{ include('uniteadmin/_delete_form.html.twig') }}
+{% endblock %}

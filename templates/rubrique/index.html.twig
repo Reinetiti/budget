@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Rubrique index{% endblock %}
+
+{% block body %}
+    <h1>Rubrique index</h1>
+
+    <a href="{{ path('rubrique_new') }}" class="btn">Ajouter</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>N°</th>
+                <th>Libelé de la rubrique</th>
+                <th>Code de la rubrique</th>
+                <th>Paragraphe</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for rubrique in rubriques %}
+            <tr>
+                <td>{{ rubrique.rubriqueid }}</td>
+                <td>{{ rubrique.librubrique }}</td>
+                <td>{{ rubrique.rubriquecode }}</td>
+                <td>{{ rubrique.paragrapheid }}</td>
+                <td>
+                    <a href="{{ path('rubrique_show', {'rubriqueid': rubrique.rubriqueid}) }}">Afficher</a>
+                    <a href="{{ path('rubrique_edit', {'rubriqueid': rubrique.rubriqueid}) }}">Modifier</a>
+                    <a href="{{ path('rubrique_delete', {'rubriqueid': rubrique.rubriqueid}) }}">Supprimer</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    {# <a href="{{ path('rubrique_new') }}">Ajouter</a> #}
+{% endblock %}

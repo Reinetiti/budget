@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouvelle catégorie de service{% endblock %}
+
+{% block body %}
+    <h1>Créer une nouvelle catégorie de service</h1>
+
+    {{ include('catservice/_form.html.twig') }}
+
+    <a href="{{ path('catservice_index') }}">retour à la liste</a>
+{% endblock %}

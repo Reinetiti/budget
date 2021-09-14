@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Commune index{% endblock %}
+
+{% block body %}
+    <h1>Commune index</h1>
+
+    <a href="{{ path('commune_new') }}" class="btn">Ajouter</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>N°</th>
+                <th>Libelé de la commune</th>
+                <th>Code de la commune</th>
+                <th>Département</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for commune in communes %}
+            <tr>
+                <td>{{ commune.communeid }}</td>
+                <td>{{ commune.libcommune }}</td>
+                <td>{{ commune.communecode }}</td>
+                <td>{{ commune.depid }}</td>
+                <td>
+                    <a href="{{ path('commune_show', {'communeid': commune.communeid}) }}">Afficher</a>
+                    <a href="{{ path('commune_edit', {'communeid': commune.communeid}) }}">Modifier</a>
+                    <a href="{{ path('commune_delete', {'communeid': commune.communeid}) }}">Supprimer</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    {# <a href="{{ path('commune_new') }}">Créer un nouveau</a> #}
+{% endblock %}
