@@ -51,7 +51,7 @@ class Typeunite
 
     public function __toString(){
         return (string)
-        $this->getCodePays();
+        $this->getLibtypeUnite();
     }
 
     public function __construct()

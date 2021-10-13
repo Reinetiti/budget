@@ -1,13 +1,14 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Article{% endblock %}
+{% block title %}Editer l'article{% endblock %}
 
 {% block body %}
-    <h1>Modification d'un article</h1>
+    <h1 class="text-center">Modifier l'article</h1>
+    <div class="card p-3 align-items-center">
+        {{ include('article/_form.html.twig', {'button_label': 'Mise à jour'}) }}<br>
 
-    {{ include('article/_form.html.twig', {'button_label': 'Mise à jour'}) }}
+        <a href="{{ path('article_index') }}" class="btn btn-secondary btn-sm">Retour à la liste</a><br>
 
-    <a href="{{ path('article_index') }}" class="btn">retour à la liste</a>
-
-    {{ include('article/_delete_form.html.twig') }}
+        {{ include('article/_delete_form.html.twig') }}
+    </div>
 {% endblock %}

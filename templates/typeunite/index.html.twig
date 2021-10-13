@@ -3,37 +3,53 @@
 {% block title %}Type d'unité{% endblock %}
 
 {% block body %}
-    <h1>Type d'unité</h1>
-
-    <a href="{{ path('typeunite_new') }}" class="btn">Ajouter</a>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>N°</th>
-                <th>Libelé du type d'unité</th>
-                <th>Code du type d'unité</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for typeunite in typeunites %}
-            <tr>
-                <td>{{ typeunite.typeid }}</td>
-                <td>{{ typeunite.libtypeUnite }}</td>
-                <td>{{ typeunite.typecode }}</td>
-                <td>
-                    <a href="{{ path('typeunite_show', {'typeid': typeunite.typeid}) }}">Afficher</a>
-                    <a href="{{ path('typeunite_edit', {'typeid': typeunite.typeid}) }}">Modifier</a>
-                    <a href="{{ path('typeunite_edit', {'typeid': typeunite.typeid}) }}">Supprimer</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h1 class="text-center">Type d'unité</h1>
+                <a href="{{ path('typeunite_new') }}" class="btn btn-primary btn-sm">Ajouter</a>
+            </div>
+            <div class="card-body table-responsive p-0" style="height: 300px;">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>N°</th>
+                            <th>Libelé du type d'unité</th>
+                            <th>Code du type d'unité</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for typeunite in typeunites %}
+                        <tr>
+                            {% if typeunite.typeid | length < 4 %}
+                                <td>000{{ typeunite.typeid }}</td>
+                            {% elseif typeunite.typeid | length < 3 %}
+                                <td>00{{ typeunite.typeid }}</td>
+                            {% elseif typeunite.typeid | length < 2 %}
+                                <td>0{{ typeunite.typeid }}</td>
+                            {% else %}
+                                <td>{{ typeunite.typeid }}</td>
+                            {% endif %}
+                            <td>{{ typeunite.libtypeUnite }}</td>
+                            <td>{{ typeunite.typecode }}</td>
+                            <td>
+                                <a href="{{ path('typeunite_show', {'typeid': typeunite.typeid}) }}" class="btn btn-info btn-sm"><i class="fa fa-eye"></i>Afficher</a>
+                                <a href="{{ path('typeunite_edit', {'typeid': typeunite.typeid}) }}" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i>Modifier</a>
+                                <a href="{{ path('typeunite_edit', {'typeid': typeunite.typeid}) }}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i>Supprimer</a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="4">no records found</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
     {# <a href="{{ path('typeunite_new') }}">Ajouter</a> #}
 {% endblock %}

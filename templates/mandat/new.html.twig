@@ -2,10 +2,12 @@
 
 {% block title %}Nouveau Mandat{% endblock %}
 
-{% block body %}
+{% block body %}<br><br>
+<div class=" container card p-3 align-items-center">
     <h1>Créer un nouveau Mandat</h1>
 
-    {{ include('mandat/_form.html.twig') }}
+    {{ include('mandat/_form.html.twig') }}<br>
 
-    <a href="{{ path('mandat_index') }}">retour à la liste</a>
+    <a href="{{ path('mandat_index') }}" class="btn btn-primary btn-sm">Retour à la liste</a>
+</div>
 {% endblock %}

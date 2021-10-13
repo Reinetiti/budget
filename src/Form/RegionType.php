@@ -14,18 +14,20 @@ class RegionType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('regioncode', TextType::class,[
+                'label'=>'Code',
+                'attr' => [
+                    'class'=>'form-control cc-name valid'
+                    // 'class'=>'appearance-none border rounded w-full py-2 px-3 text-grey-darker'
+                ],
+            ])
             ->add('libregion', TextType::class,[
                 'label'=>'Libellé',
                 'attr' => [
-                    'class'=>'appearance-none border rounded w-full py-2 px-3 text-grey-darker'
+                    'class'=>'form-control cc-name valid'
+                    // 'class'=>'appearance-none border rounded w-full py-2 px-3 text-grey-darker'
             ],
         ])
-            ->add('regioncode', TextType::class,[
-                'label'=>'Code de la région',
-                'attr' => [
-                    'class'=>'appearance-none border rounded w-full py-2 px-3 text-grey-darker'
-                ],
-            ])
         ;
     }
 

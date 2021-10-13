@@ -1,41 +1,49 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}ProjetMandat index{% endblock %}
+{% block title %}Projet de Mandatement{% endblock %}
 
 {% block body %}
-    <h1>ProjetMandat index</h1>
-
-    <a href="{{ path('projet_mandat_new') }}" class="btn">Ajouter</a>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>N°</th>
-                <th>Date du projet de mandatement</th>
-                <th>Objet du Projet</th>
-                <th>N° engagement</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for projet_mandat in projet_mandats %}
-            <tr>
-                <td>{{ projet_mandat.numProjet }}</td>
-                <td>{{ projet_mandat.dateProjet ? projet_mandat.dateProjet|date('Y-m-d') : '' }}</td>
-                <td>{{ projet_mandat.objetProjet }}</td>
-                <td>{{ projet_mandat.numEngagement }}</td>
-                <td>
-                    <a href="{{ path('projet_mandat_show', {'numProjet': projet_mandat.numProjet}) }}">Afficher</a>
-                    <a href="{{ path('projet_mandat_edit', {'numProjet': projet_mandat.numProjet}) }}">Modifier</a>
-                    <a href="{{ path('projet_mandat_edit', {'numProjet': projet_mandat.numProjet}) }}">Supprimer</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h1 class="text-center">Projet de Mandatement</h1>
+                <a href="{{ path('projet_mandat_new') }}" class="btn btn-primary btn-sm">Ajouter</a>
+            </div>
+            <div class="card-body table-responsive p-0" style="height: 300px;">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>N°</th>
+                            <th>Date du projet de mandatement</th>
+                            <th>Objet du Projet</th>
+                            <th>N° engagement</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for projet_mandat in projet_mandats %}
+                        <tr>
+                            <td>{{ projet_mandat.numProjet }}</td>
+                            <td>{{ projet_mandat.dateProjet ? projet_mandat.dateProjet|date('Y-m-d') : '' }}</td>
+                            <td>{{ projet_mandat.objetProjet }}</td>
+                            <td>{{ projet_mandat.numEngagement }}</td>
+                            <td>
+                                <a href="{{ path('projet_mandat_show', {'numProjet': projet_mandat.numProjet}) }}" class="btn btn-info btn-sm"><i class="fa fa-eye"></i>Afficher</a>
+                                <a href="{{ path('projet_mandat_edit', {'numProjet': projet_mandat.numProjet}) }}" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i>Modifier</a>
+                                <a href="{{ path('projet_mandat_edit', {'numProjet': projet_mandat.numProjet}) }}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i>Supprimer</a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="4">no records found</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
     {# <a href="{{ path('projet_mandat_new') }}">Ajouter</a> #}
 {% endblock %}

@@ -16,23 +16,26 @@ class TypepgramType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('libtypepgram', TextType::class,[
-                'label'=>'Libellé',
-                'attr' => [
-                    'class'=>'appearance-none border rounded w-full py-2 px-3 text-grey-darker'
-                ],
-            ])
             ->add('typepgramcode', TextType::class,[
                 'label'=>'Code',
                 'attr' => [
-                    'class'=>'appearance-none border rounded w-full py-2 px-3 text-grey-darker'
+                    'class'=>'form-control cc-name valid'
+                    // 'class'=>'appearance-none border rounded w-full py-2 px-3 text-grey-darker'
+                ],
+            ])
+            ->add('libtypepgram', TextType::class,[
+                'label'=>'Libellé',
+                'attr' => [
+                    'class'=>'form-control cc-name valid'
+                    // 'class'=>'appearance-none border rounded w-full py-2 px-3 text-grey-darker'
                 ],
             ])
             ->add('programmeid', EntityType::class,[
                 'class'=>Programme::class,
                 'label'=>'Programme',
                 'attr' => [
-                    'class'=>'appearance-none border rounded w-full py-2 px-3 text-grey-darker'
+                    'class'=>'form-control cc-name valid'
+                    // 'class'=>'appearance-none border rounded w-full py-2 px-3 text-grey-darker'
                 ],
             ])
         ;

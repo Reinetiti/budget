@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Typebudget{% endblock %}
+{% block title %}Type de budget{% endblock %}
 
 {% block body %}
-    <h1>Typebudget</h1>
+    <h1 class="text-center">Affichage du Type de budget</h1>
 
     <table class="table">
         <tbody>
@@ -22,9 +22,9 @@
         </tbody>
     </table>
 
-    <a href="{{ path('typebudget_index') }}">retour à la liste</a>
+    <a href="{{ path('typebudget_index') }}" class="btn">Retour à la liste</a>
 
-    <a href="{{ path('typebudget_edit', {'typebudgetid': typebudget.typebudgetid}) }}">modifier</a>
+    <a href="{{ path('typebudget_edit', {'typebudgetid': typebudget.typebudgetid}) }}" class="btn">Modifier</a>
 
     {{ include('typebudget/_delete_form.html.twig') }}
 {% endblock %}

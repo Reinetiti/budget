@@ -16,23 +16,26 @@ class DepartementType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('libdep', TextType::class,[
-                'label'=>'Libellé du département',
+            ->add('depcode', TextType::class,[
+                'label'=>'Code',
                 'attr' => [
-                    'class'=>'appearance-none border rounded w-full py-2 px-3 text-grey-darker'
+                    'class'=>'form-control cc-name valid'
+                    // 'class'=>'appearance-none border rounded w-full py-2 px-3 text-grey-darker'
                 ],
             ])
-            ->add('depcode', TextType::class,[
-                'label'=>'Code du département',
+            ->add('libdep', TextType::class,[
+                'label'=>'Libellé',
                 'attr' => [
-                    'class'=>'appearance-none border rounded w-full py-2 px-3 text-grey-darker'
+                    'class'=>'form-control cc-name valid'
+                    // 'class'=>'appearance-none border rounded w-full py-2 px-3 text-grey-darker'
                 ],
             ])
             ->add('regionid', EntityType::class,[
                 'class'=>Region::class,
                 'label'=>'Région',
                 'attr' => [
-                    'class'=>'appearance-none border rounded w-full py-2 px-3 text-grey-darker'
+                    'class'=>'form-control cc-name valid'
+                    // 'class'=>'appearance-none border rounded w-full py-2 px-3 text-grey-darker'
                 ],
             ])
         ;

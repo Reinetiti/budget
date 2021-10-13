@@ -56,7 +56,7 @@ class Groupe
 
     public function __toString(){
         return(string)
-        $this->getGroupeid();
+        $this->getLibgroupe();
     }
 
     public function __construct()

@@ -61,7 +61,7 @@ class Programme
 
     public function __toString(){
         return(string)
-        $this->getProgrammeid();
+        $this->getLibprogramme();
     }
 
     public function __construct()

@@ -1,45 +1,68 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Unité Adminitrative{% endblock %}
+{% block title %}Unité Administrative{% endblock %}
 
 {% block body %}
-    <h1>Unité Adminitrative</h1>
-
-    <a href="{{ path('uniteadmin_new') }}" class="btn">Ajouter</a>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>N°</th>
-                <th>Libelé de l'Unité Adminitrative</th>
-                <th>Code de l'Unité Adminitrative</th>
-                <th>Type Unité</th>
-                <th>Type de Service</th>
-                <th>Commune</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for uniteadmin in uniteadmins %}
-            <tr>
-                <td>{{ uniteadmin.uniteid }}</td>
-                <td>{{ uniteadmin.libunite }}</td>
-                <td>{{ uniteadmin.unitecode }}</td>
-                <td>{{ uniteadmin.typeid }}</td>
-                <td>{{ uniteadmin.serviceid }}</td>
-                <td>{{ uniteadmin.communeid }}</td>
-                <td>
-                    <a href="{{ path('uniteadmin_show', {'uniteid': uniteadmin.uniteid}) }}">Afficher</a>
-                    <a href="{{ path('uniteadmin_edit', {'uniteid': uniteadmin.uniteid}) }}">Modifier</a>
-                    <a href="{{ path('uniteadmin_delete', {'uniteid': uniteadmin.uniteid}) }}">Supprimer</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
+{# card p-3 #}
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h1 class="text-center">Unité Administrative</h1>
+                <a href="{{ path('uniteadmin_new') }}" class="btn btn-primary btn-sm">Ajouter</a>
+            </div>
+            <div class="card-body table-responsive p-0" style="height: 300px;">
+                <table class="table table-head-fixed text-nowrap">
+                {# table-bordered #}
+                    <thead>
+                        <tr>
+                            <th class="text-center">N°</th>
+                            <th class="text-center">Libelé de l'Unité Administrative</th>
+                            <th class="text-center">Code de l'Unité Administrative</th>
+                            <th class="text-center">Type d' Unité</th>
+                            <th class="text-center">Type de Service</th>
+                            <th class="text-center">Commune</th>
+                            <th class="text-center">Actions</th>
+                            {# Les différentes à effectuer sur l'Unité #}
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for uniteadmin in uniteadmins %}
+                        <tr>
+                            {% if uniteadmin.serviceid.serviceid | length < 2 and uniteadmin.typeid.typeid | length < 2 and uniteadmin.communeid.depid.regionid.regionid | length < 2 and uniteadmin.communeid.depid.depid | length < 2 and uniteadmin.communeid.communeid | length < 2 %}
+                                <td>{{ uniteadmin.uniteid }}0{{ uniteadmin.serviceid.serviceid }}0{{ uniteadmin.typeid.typeid }}0{{ uniteadmin.communeid.depid.regionid.regionid }}0{{ uniteadmin.communeid.depid.depid }}0{{ uniteadmin.communeid.communeid }}</td>
+                            {% elseif uniteadmin.typeid.typeid | length < 2 and uniteadmin.communeid.depid.regionid.regionid | length < 2 and uniteadmin.communeid.depid.depid | length < 2 and uniteadmin.communeid.communeid | length < 2 %}
+                                <td>{{ uniteadmin.uniteid }}{{ uniteadmin.serviceid.serviceid }}0{{ uniteadmin.typeid.typeid }}0{{ uniteadmin.communeid.depid.regionid.regionid }}0{{ uniteadmin.communeid.depid.depid }}0{{ uniteadmin.communeid.communeid }}</td>
+                            {% elseif uniteadmin.communeid.depid.regionid.regionid | length < 2 and uniteadmin.communeid.depid.depid | length < 2 and uniteadmin.communeid.communeid | length < 2 %}
+                                <td>{{ uniteadmin.uniteid }}{{ uniteadmin.serviceid.serviceid }}{{ uniteadmin.typeid.typeid }}0{{ uniteadmin.communeid.depid.regionid.regionid }}0{{ uniteadmin.communeid.depid.depid }}0{{ uniteadmin.communeid.communeid }}</td>
+                            {% elseif uniteadmin.communeid.depid.depid | length < 2 and uniteadmin.communeid.communeid | length < 2 %}
+                                <td>{{ uniteadmin.uniteid }}{{ uniteadmin.serviceid.serviceid }}{{ uniteadmin.typeid.typeid }}{{ uniteadmin.communeid.depid.regionid.regionid }}0{{ uniteadmin.communeid.depid.depid }}0{{ uniteadmin.communeid.communeid }}</td>
+                            {% elseif uniteadmin.communeid.communeid | length < 2 %}
+                                <td>{{ uniteadmin.uniteid }}{{ uniteadmin.serviceid.serviceid }}{{ uniteadmin.typeid.typeid }}{{ uniteadmin.communeid.depid.regionid.regionid }}{{ uniteadmin.communeid.depid.depid }}0{{ uniteadmin.communeid.communeid }}</td>
+                            {% else %}
+                                <td>{{ uniteadmin.uniteid }}{{ uniteadmin.serviceid.serviceid }}{{ uniteadmin.typeid.typeid }}{{ uniteadmin.communeid.depid.regionid.regionid }}{{ uniteadmin.communeid.depid.depid }}{{ uniteadmin.communeid.communeid }}</td>
+                            {% endif %}
+                            <td class="text-center">{{ uniteadmin.libunite }}</td>
+                            <td class="text-center">{{ uniteadmin.unitecode }}</td>
+                            <td class="text-center">{{ uniteadmin.typeid }}</td>
+                            <td class="text-center">{{ uniteadmin.serviceid }}</td>
+                            <td class="text-center">{{ uniteadmin.communeid }}</td>
+                            <td>
+                                <a href="{{ path('uniteadmin_show', {'uniteid': uniteadmin.uniteid}) }}" class="btn btn-info btn-sm"><i class="fa fa-eye"></i>Afficher</a>
+                                <a href="{{ path('uniteadmin_edit', {'uniteid': uniteadmin.uniteid}) }}" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i>Modifier</a>
+                                <a href="{{ path('uniteadmin_delete', {'uniteid': uniteadmin.uniteid}) }}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i>Supprimer</a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="4">no records found</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
     {# <a href="{{ path('uniteadmin_new') }}">Ajouter</a> #}
 {% endblock %}

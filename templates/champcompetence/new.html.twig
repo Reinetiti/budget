@@ -3,9 +3,11 @@
 {% block title %}Nouvelle champ de compétence{% endblock %}
 
 {% block body %}
+<div class="card p-3 align-items-center">
     <h1>Créer une nouvelle champ de compétence</h1>
 
     {{ include('champcompetence/_form.html.twig') }}
 
-    <a href="{{ path('champcompetence_index') }}">retour à la liste</a>
+    <a href="{{ path('champcompetence_index') }}" class="btn btn-secondary btn-sm">Retour à la liste</a>
+</div>
 {% endblock %}

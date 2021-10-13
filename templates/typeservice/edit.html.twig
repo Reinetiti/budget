@@ -4,10 +4,11 @@
 
 {% block body %}
     <h1>Modifier le Type de service</h1>
+<div class="card p-3 align-items-center">
+    {{ include('typeservice/_form.html.twig', {'button_label': 'Mise à jour'}) }}<br>
 
-    {{ include('typeservice/_form.html.twig', {'button_label': 'Mise à jour'}) }}
-
-    <a href="{{ path('typeservice_index') }}">retour à la liste</a>
+    <a href="{{ path('typeservice_index') }}" class="btn btn-primary btn-sm">Retour à la liste</a><br>
 
     {{ include('typeservice/_delete_form.html.twig') }}
+</div>
 {% endblock %}

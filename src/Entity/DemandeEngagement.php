@@ -68,7 +68,7 @@ class DemandeEngagement
 
     public function __toString(){
         return(string)
-        $this->getNumDemande();
+        $this->getObjet();
     }
 
     public function __construct()

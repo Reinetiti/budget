@@ -1,41 +1,54 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Paragraphe index{% endblock %}
+{% block title %}Paragraphe{% endblock %}
 
 {% block body %}
-    <h1>Paragraphe index</h1>
-
-    <a href="{{ path('paragraphe_new') }}" class="btn">Ajouter</a>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>N°</th>
-                <th>Libelé du paragraphe</th>
-                <th>Code du paragraphe</th>
-                <th>Article</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for paragraphe in paragraphes %}
-            <tr>
-                <td>{{ paragraphe.paragrapheid }}</td>
-                <td>{{ paragraphe.libparagraphe }}</td>
-                <td>{{ paragraphe.paragraphecode }}</td>
-                <td>{{ paragraphe.articleid }}</td>
-                <td>
-                    <a href="{{ path('paragraphe_show', {'paragrapheid': paragraphe.paragrapheid}) }}">Afficher</a>
-                    <a href="{{ path('paragraphe_edit', {'paragrapheid': paragraphe.paragrapheid}) }}">Modifier</a>
-                    <a href="{{ path('paragraphe_delete', {'paragrapheid': paragraphe.paragrapheid}) }}">Supprimer</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h1 class="text-center">Paragraphe</h1>
+                <a href="{{ path('paragraphe_new') }}" class="btn btn-primary btn-sm">Ajouter</a>
+            </div>
+            <div class="card-body table-responsive p-0" style="height: 300px;">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>N°</th>
+                            <th>Libelé du paragraphe</th>
+                            <th>Code du paragraphe</th>
+                            <th>Article</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for paragraphe in paragraphes %}
+                        <tr>
+                        {% if paragraphe.articleid.articleid | length < 2 %}
+                            <td>0{{ paragraphe.articleid.articleid }}{{ paragraphe.paragrapheid }}</td>
+                        {% else %}
+                            <td>{{ paragraphe.articleid.articleid }}{{ paragraphe.paragrapheid }}</td>
+                        {% endif %}
+                            <td>{{ paragraphe.libparagraphe }}</td>
+                            <td>{{ paragraphe.paragraphecode }}</td>
+                            <td>{{ paragraphe.articleid }}</td>
+                            <td>
+                                <a href="{{ path('paragraphe_show', {'paragrapheid': paragraphe.paragrapheid}) }}" class="btn btn-info btn-sm"><i class="fa fa-eye"></i>Afficher</a>
+                                <a href="{{ path('paragraphe_edit', {'paragrapheid': paragraphe.paragrapheid}) }}" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i>Modifier</a>
+                                <a href="{{ path('paragraphe_delete', {'paragrapheid': paragraphe.paragrapheid}) }}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i>Supprimer</a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="4">no records found</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
 
     {# <a href="{{ path('paragraphe_new') }}">Ajouter</a> #}
 {% endblock %}

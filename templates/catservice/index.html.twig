@@ -1,41 +1,54 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Catservice index{% endblock %}
+{% block title %}Catégorie de service{% endblock %}
 
 {% block body %}
-    <h1>Catservice</h1>
-
-    <a href="{{ path('catservice_new') }}" class="btn">Ajouter</a>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>N°</th>
-                <th>Libelé de la Catégorie de Service</th>
-                <th>Code Libelé de la Catégorie de Service</th>
-                <th>Type Unité</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for catservice in catservices %}
-            <tr>
-                <td>{{ catservice.catid }}</td>
-                <td>{{ catservice.libcat }}</td>
-                <td>{{ catservice.catcode }}</td>
-                <td>{{ catservice.typeid }}</td>
-                <td>
-                    <a href="{{ path('catservice_show', {'catid': catservice.catid}) }}">afficher</a>
-                    <a href="{{ path('catservice_edit', {'catid': catservice.catid}) }}">modifier</a>
-                    <a href="{{ path('catservice_delete', {'catid': catservice.catid}) }}">Supprimer</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h1 class="text-center">Catégorie de service</h1>
+                <a href="{{ path('catservice_new') }}" class="btn btn-primary btn-sm">Ajouter</a>
+            </div>
+            <div class="card-body table-responsive p-0" style="height: 300px;">
+                <table class="table table-head-fixed text-nowrap">
+                    <thead>
+                        <tr>
+                            <th class="text-center">N°</th>
+                            <th class="text-center">Libelé de la Catégorie de Service</th>
+                            <th class="text-center">Code Libelé de la Catégorie de Service</th>
+                            <th class="text-center">Type Unité</th>
+                            <th class="text-center">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for catservice in catservices %}
+                        <tr>
+                            {% if catservice.typeid.typeid | length < 2 %}
+                                <td>{{ catservice.catid }}0{{ catservice.typeid.typeid }}</td>
+                            {% else %}
+                                <td>{{ catservice.catid }}{{ catservice.typeid.typeid }}</td>
+                            {% endif %}
+                            {# <td>{{ catservice.catid }}{{ catservice.typeid.typeid }}</td> #}
+                            <td>{{ catservice.libcat }}</td>
+                            <td>{{ catservice.catcode }}</td>
+                            <td>{{ catservice.typeid }}</td>
+                            <td>
+                                <a href="{{ path('catservice_show', {'catid': catservice.catid}) }}" class="btn btn-info btn-sm"><i class="fa fa-eye"></i>afficher</a>
+                                <a href="{{ path('catservice_edit', {'catid': catservice.catid}) }}" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i>modifier</a>
+                                <a href="{{ path('catservice_delete', {'catid': catservice.catid}) }}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i>Supprimer</a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="4">no records found</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
     {# <a href="{{ path('catservice_new') }}">Créer un nouveau</a> #}
 {% endblock %}

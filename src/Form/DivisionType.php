@@ -14,16 +14,18 @@ class DivisionType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('libdivision', TextType::class,[
-                'label'=>'Libellé de la,division',
+            ->add('divisioncode', TextType::class,[
+                'label'=>'Code',
                 'attr' => [
-                    'class'=>'appearance-none border rounded w-full py-2 px-3 text-grey-darker'
+                    'class'=>'form-control cc-name valid'
+                    // 'class'=>'appearance-none border rounded w-full py-2 px-3 text-grey-darker'
                 ],
             ])
-            ->add('divisioncode', TextType::class,[
-                'label'=>'Code de la division',
+            ->add('libdivision', TextType::class,[
+                'label'=>'Libellé',
                 'attr' => [
-                    'class'=>'appearance-none border rounded w-full py-2 px-3 text-grey-darker'
+                    'class'=>'form-control cc-name valid'
+                    // 'class'=>'appearance-none border rounded w-full py-2 px-3 text-grey-darker'
                 ],
             ])
         ;

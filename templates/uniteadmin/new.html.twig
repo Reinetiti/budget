@@ -3,9 +3,12 @@
 {% block title %}Unité Adminitrative{% endblock %}
 
 {% block body %}
+<div class="card p-3 align-items-center">
     <h1>Créer une nouvelle Unité Adminitrative</h1>
 
     {{ include('uniteadmin/_form.html.twig') }}
 
-    <a href="{{ path('uniteadmin_index') }}">retour à la liste</a>
+    <a href="{{ path('uniteadmin_index') }}" class="btn btn-primary btn-sm">Retour à la liste</a>
+</div>
+    
 {% endblock %}

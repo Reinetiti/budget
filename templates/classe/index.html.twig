@@ -1,41 +1,55 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Classe index{% endblock %}
+{% block title %}Classe{% endblock %}
 
 {% block body %}
-    <h1>Classe index</h1>
-
-    <a href="{{ path('classe_new') }}" class="btn">Ajouter</a>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>N°</th>
-                <th>Libelé de la classe</th>
-                <th>Code de la classe</th>
-                <th>Groupe</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for classe in classes %}
-            <tr>
-                <td>{{ classe.classeid }}</td>
-                <td>{{ classe.libclasse }}</td>
-                <td>{{ classe.classecode }}</td>
-                <td>{{ classe.groupeid }}</td>
-                <td>
-                    <a href="{{ path('classe_show', {'classeid': classe.classeid}) }}">Afficher</a>
-                    <a href="{{ path('classe_edit', {'classeid': classe.classeid}) }}">Modifier</a>
-                    <a href="{{ path('classe_delete', {'classeid': classe.classeid}) }}">Supprimer</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h1 class="text-center">Classe</h1>
+                <a href="{{ path('classe_new') }}" class="btn btn-primary btn-sm">Ajouter</a>
+            </div>
+            <div class="card-body table-responsive p-0" style="height: 300px;">
+                <table class="table table-head-fixed text-nowrap">
+                    <thead>
+                        <tr>
+                            <th>N°</th>
+                            <th>Libelé de la classe</th>
+                            <th>Code de la classe</th>
+                            <th>Groupe</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for classe in classes %}
+                        <tr>
+                            {% if classe.groupeid.divisionid.divisionid | length < 2 and classe.groupeid.groupeid | length < 2 %}
+                                <td>0{{ classe.groupeid.divisionid.divisionid }}0{{ classe.groupeid.groupeid }}{{ classe.classeid }}</td>
+                            {% elseif classe.groupeid.groupeid | length < 2 %}
+                                <td>{{ classe.groupeid.divisionid.divisionid }}0{{ classe.groupeid.groupeid }}{{ classe.classeid }}</td>
+                            {% else %}
+                                <td>{{ classe.groupeid.divisionid.divisionid }}{{ classe.groupeid.groupeid }}{{ classe.classeid }}</td>
+                            {% endif %}
+                            <td>{{ classe.libclasse }}</td>
+                            <td>{{ classe.classecode }}</td>
+                            <td>{{ classe.groupeid }}</td>
+                            <td>
+                                <a href="{{ path('classe_show', {'classeid': classe.classeid}) }}" class="btn btn-info btn-sm"><i class="fa fa-eye"></i>Afficher</a>
+                                <a href="{{ path('classe_edit', {'classeid': classe.classeid}) }}" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i>Modifier</a>
+                                <a href="{{ path('classe_delete', {'classeid': classe.classeid}) }}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i>Supprimer</a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="4">no records found</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
     {# <a href="{{ path('classe_new') }}">Créer un nouveau</a> #}
 {% endblock %}

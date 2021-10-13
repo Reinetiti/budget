@@ -46,7 +46,7 @@ class Region
 
     public function __toString(){
         return (string)
-        $this->getRegionid();
+        $this->getLibregion();
     }
 
     public function __construct()

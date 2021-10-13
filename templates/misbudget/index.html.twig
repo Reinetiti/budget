@@ -3,39 +3,55 @@
 {% block title %}Mission Budgetaire{% endblock %}
 
 {% block body %}
-    <h1>Mission Budgetaire</h1>
-
-    <a href="{{ path('misbudget_new') }}" class="btn">Ajouter</a>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>N°</th>
-                <th>Libelé de la mission budgetaire</th>
-                <th>Code de la mission budgetaire</th>
-                <th>Mission budgetaire</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for misbudget in misbudgets %}
-            <tr>
-                <td>{{ misbudget.misbudgetid }}</td>
-                <td>{{ misbudget.libmisbudget }}</td>
-                <td>{{ misbudget.misbudgetcode }}</td>
-                <td>{{ misbudget.misetatid }}</td>
-                <td>
-                    <a href="{{ path('misbudget_show', {'misbudgetid': misbudget.misbudgetid}) }}">Afficher</a>
-                    <a href="{{ path('misbudget_edit', {'misbudgetid': misbudget.misbudgetid}) }}">Modifier</a>
-                    <a href="{{ path('misbudget_delete', {'misbudgetid': misbudget.misbudgetid}) }}">Supprimer</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h1 class="text-center">Mission Budgetaire</h1>
+                <a href="{{ path('misbudget_new') }}" class="btn btn-primary btn-sm">Ajouter</a>
+            </div>
+            <div class="card-body table-responsive p-0" style="height: 300px;">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>N°</th>
+                            <th>Libelé de la mission budgetaire</th>
+                            <th>Code de la mission budgetaire</th>
+                            <th>Mission d'Etat</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for misbudget in misbudgets %}
+                        <tr>
+                            {% if misbudget.misetatid.misetatid | length < 2 and misbudget.misbudgetid | length < 2 %}
+                                <td>0{{ misbudget.misetatid.misetatid }}0{{ misbudget.misbudgetid }}</td>
+                            {% elseif misbudget.misbudgetid | length < 2 %}
+                                <td>{{ misbudget.misetatid.misetatid }}0{{ misbudget.misbudgetid }}</td>
+                            {% elseif misbudget.misetatid.misetatid | length < 2 %}
+                                <td>0{{ misbudget.misetatid.misetatid }}{{ misbudget.misbudgetid }}</td>
+                            {% else %}
+                                <td>{{ misbudget.misetatid.misetatid }}{{ misbudget.misbudgetid }}</td>
+                            {% endif %}
+                            <td>{{ misbudget.libmisbudget }}</td>
+                            <td>{{ misbudget.misbudgetcode }}</td>
+                            <td>{{ misbudget.misetatid }}</td>
+                            <td>
+                                <a href="{{ path('misbudget_show', {'misbudgetid': misbudget.misbudgetid}) }}" class="btn btn-info btn-sm"><i class="fa fa-eye"></i>Afficher</a>
+                                <a href="{{ path('misbudget_edit', {'misbudgetid': misbudget.misbudgetid}) }}" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i>Modifier</a>
+                                <a href="{{ path('misbudget_delete', {'misbudgetid': misbudget.misbudgetid}) }}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i>Supprimer</a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="4">no records found</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
     {# <a href="{{ path('misbudget_new') }}">Ajouter</a> #}
 {% endblock %}

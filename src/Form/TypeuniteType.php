@@ -14,16 +14,18 @@ class TypeuniteType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('libtypeUnite', TextType::class,[
-                'label'=>'Libellé',
-                'attr' => [
-                    'class'=>'appearance-none border rounded w-full py-2 px-3 text-grey-darker'
-                ],
-            ])
             ->add('typecode', TextType::class,[
                 'label'=>'Code',
                 'attr' => [
-                    'class'=>'appearance-none border rounded w-full py-2 px-3 text-grey-darker'
+                    'class'=>'form-control cc-name valid'
+                    // 'class'=>'appearance-none border rounded w-full py-2 px-3 text-grey-darker'
+                ],
+            ])
+            ->add('libtypeUnite', TextType::class,[
+                'label'=>'Libellé',
+                'attr' => [
+                    'class'=>'form-control cc-name valid'
+                    // 'class'=>'appearance-none border rounded w-full py-2 px-3 text-grey-darker'
                 ],
             ])
         ;

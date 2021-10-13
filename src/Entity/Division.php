@@ -46,7 +46,7 @@ class Division
 
     public function __toString(){
         return (string)
-        $this->getDivisionid();
+        $this->getLibdivision();
     }
 
     public function __construct()

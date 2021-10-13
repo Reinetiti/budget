@@ -1,43 +1,51 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}PieceJustificative index{% endblock %}
+{% block title %}Pièce Justificative{% endblock %}
 
 {% block body %}
-    <h1>PieceJustificative index</h1>
-
-    <a href="{{ path('piece_justificative_new') }}" class="btn">Ajouter</a>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>N°</th>
-                <th>Référence</th>
-                <th>Libelé de la Pièce justificative</th>
-                <th>Date</th>
-                <th>N° demande</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for piece_justificative in piece_justificatives %}
-            <tr>
-                <td>{{ piece_justificative.idPiece }}</td>
-                <td>{{ piece_justificative.ref }}</td>
-                <td>{{ piece_justificative.libPiece }}</td>
-                <td>{{ piece_justificative.datePiece ? piece_justificative.datePiece|date('Y-m-d') : '' }}</td>
-                <td>{{ piece_justificative.numDemande }}</td>
-                <td>
-                    <a href="{{ path('piece_justificative_show', {'idPiece': piece_justificative.idPiece}) }}">Afficher</a>
-                    <a href="{{ path('piece_justificative_edit', {'idPiece': piece_justificative.idPiece}) }}">Modifier</a>
-                    <a href="{{ path('piece_justificative_delete', {'idPiece': piece_justificative.idPiece}) }}">Supprimer</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="5">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h1 class="text-center">Pièce Justificative</h1>
+                <a href="{{ path('piece_justificative_new') }}" class="btn btn-primary btn-sm">Ajouter</a>
+            </div>
+            <div class="card-body table-responsive p-0" style="height: 300px;">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>N°</th>
+                            <th>Référence</th>
+                            <th>Libelé de la Pièce justificative</th>
+                            <th>Date</th>
+                            <th>N° demande</th>
+                            <th>actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for piece_justificative in piece_justificatives %}
+                        <tr>
+                            <td>{{ piece_justificative.idPiece }}</td>
+                            <td>{{ piece_justificative.ref }}</td>
+                            <td>{{ piece_justificative.libPiece }}</td>
+                            <td>{{ piece_justificative.datePiece ? piece_justificative.datePiece|date('Y-m-d') : '' }}</td>
+                            <td>{{ piece_justificative.numDemande }}</td>
+                            <td>
+                                <a href="{{ path('piece_justificative_show', {'idPiece': piece_justificative.idPiece}) }}" class="btn btn-info btn-sm"><i class="fa fa-eye"></i>Afficher</a>
+                                <a href="{{ path('piece_justificative_edit', {'idPiece': piece_justificative.idPiece}) }}" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i>Modifier</a>
+                                <a href="{{ path('piece_justificative_delete', {'idPiece': piece_justificative.idPiece}) }}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i>Supprimer</a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="5">no records found</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
     {# <a href="{{ path('piece_justificative_new') }}">Créer un nouveau</a> #}
 {% endblock %}

@@ -1,11 +1,14 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Budgetisation{% endblock %}
+{% block title %}Budgétisation{% endblock %}
 
 {% block body %}
-    <h1>Create new Budgetisation</h1>
+
+<div class="card p-3 align-items-center">
+    <h1>Budgéstisation</h1>
 
     {{ include('budgetisation/_form.html.twig') }}
 
-    <a href="{{ path('budgetisation_index') }}" class="btn">retour à la liste</a>
+    <a href="{{ path('budgetisation_index') }}" class="btn btn-secondary btn-sm">Retour à la liste</a>
+    </div>
 {% endblock %}

@@ -16,23 +16,26 @@ class GroupeType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('libgroupe', TextType::class,[
-                'label'=>'Libellé du groupe',
+            ->add('groupecode', TextType::class,[
+                'label'=>'Code',
                 'attr' => [
-                    'class'=>'appearance-none border rounded w-full py-2 px-3 text-grey-darker'
+                    'class'=>'form-control cc-name valid'
+                    // 'class'=>'appearance-none border rounded w-full py-2 px-3 text-grey-darker'
                 ],
             ])
-            ->add('groupecode', TextType::class,[
-                'label'=>'Code du groupe',
+            ->add('libgroupe', TextType::class,[
+                'label'=>'Libellé',
                 'attr' => [
-                    'class'=>'appearance-none border rounded w-full py-2 px-3 text-grey-darker'
+                    'class'=>'form-control cc-name valid'
+                    // 'class'=>'appearance-none border rounded w-full py-2 px-3 text-grey-darker'
                 ],
             ])
             ->add('divisionid', EntityType::class,[
                 'class'=>Division::class,
                 'label'=>'Division',
                 'attr' => [
-                    'class'=>'appearance-none border rounded w-full py-2 px-3 text-grey-darker'
+                    'class'=>'form-control cc-name valid'
+                    // 'class'=>'appearance-none border rounded w-full py-2 px-3 text-grey-darker'
                 ],
             ])
         ;

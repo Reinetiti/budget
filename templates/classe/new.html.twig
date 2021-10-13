@@ -3,9 +3,11 @@
 {% block title %}Nouvelle Classe{% endblock %}
 
 {% block body %}
+<div class="card p-3 align-items-center">
     <h1>Créer une nouvelle Classe</h1>
 
     {{ include('classe/_form.html.twig') }}
 
-    <a href="{{ path('classe_index') }}">retour à la liste</a>
+    <a href="{{ path('classe_index') }}" class="btn btn-primary btn-sm">Retour à la liste</a>
+</div>
 {% endblock %}

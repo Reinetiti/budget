@@ -1,40 +1,48 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Exercice index{% endblock %}
+{% block title %}Exercice{% endblock %}
 
-{% block body %}
-    <h1>Exercice index</h1>
+{% block body %}<br><br>
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h1 class="text-center">Exercice</h1>
+                <a href="{{ path('exercice_new') }}" class="btn btn-primary btn-sm">Ajouter</a>
+            </div>
+            <div class="card-body table-responsive p-0" style="height: 300px;">
 
-    <a href="{{ path('exercice_new') }}" class="btn">Ajouter</a>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Annee</th>
-                <th>Début</th>
-                <th>Fin</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for exercice in exercices %}
-            <tr>
-                <td>{{ exercice.annee }}</td>
-                <td>{{ exercice.debut ? exercice.debut|date('Y-m-d') : '' }}</td>
-                <td>{{ exercice.fin ? exercice.fin|date('Y-m-d') : '' }}</td>
-                <td>
-                    <a href="{{ path('exercice_show', {'annee': exercice.annee}) }}" class="btn">afficher</a>
-                    <a href="{{ path('exercice_edit', {'annee': exercice.annee}) }}" class="btn">modifier</a>
-                    <a href="{{ path('exercice_delete', {'annee': exercice.annee}) }}" class="btn">Supprimer</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Annee</th>
+                            <th>Début</th>
+                            <th>Fin</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for exercice in exercices %}
+                        <tr>
+                            <td>{{ exercice.annee }}</td>
+                            <td>{{ exercice.debut ? exercice.debut|date('Y-m-d') : '' }}</td>
+                            <td>{{ exercice.fin ? exercice.fin|date('Y-m-d') : '' }}</td>
+                            <td>
+                                <a href="{{ path('exercice_show', {'annee': exercice.annee}) }}" class="btn btn-info btn-sm"><i class="fa fa-eye"></i>afficher</a>
+                                <a href="{{ path('exercice_edit', {'annee': exercice.annee}) }}" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i>modifier</a>
+                                <a href="{{ path('exercice_delete', {'annee': exercice.annee}) }}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i>Supprimer</a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="4">no records found</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
     {# <a href="{{ path('exercice_new') }}" class="btn">Créer un nouveau</a> #}
 {% endblock %}

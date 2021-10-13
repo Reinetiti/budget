@@ -1,39 +1,51 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Region index{% endblock %}
+{% block title %}Région{% endblock %}
 
 {% block body %}
-    <h1>Region index</h1>
-
-    <a href="{{ path('region_new') }}" class="btn">Ajouter</a>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>N°</th>
-                <th>Libelé de la région</th>
-                <th>Code de la région</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for region in regions %}
-            <tr>
-                <td>{{ region.regionid }}</td>
-                <td>{{ region.libregion }}</td>
-                <td>{{ region.regioncode }}</td>
-                <td>
-                    <a href="{{ path('region_show', {'regionid': region.regionid}) }}">Afficher</a>
-                    <a href="{{ path('region_edit', {'regionid': region.regionid}) }}">Modifier</a>
-                    <a href="{{ path('region_delete', {'regionid': region.regionid}) }}">Supprimer</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h1 class="text-center">Région</h1>
+                <a href="{{ path('region_new') }}" class="btn btn-primary btn-sm">Ajouter</a>
+            </div>
+            <div class="card-body table-responsive p-0" style="height: 300px;">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>N°</th>
+                            <th>Libelé de la région</th>
+                            <th>Code de la région</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for region in regions %}
+                        <tr>
+                            {% if region.regionid | length < 2 %}
+                            <td>0{{ region.regionid }}</td>
+                            {% else %}
+                                <td>{{ region.regionid }}</td>
+                            {% endif %}
+                            <td>{{ region.libregion }}</td>
+                            <td>{{ region.regioncode }}</td>
+                            <td>
+                                <a href="{{ path('region_show', {'regionid': region.regionid}) }}" class="btn btn-info btn-sm"><i class="fa fa-eye"></i>Afficher</a>
+                                <a href="{{ path('region_edit', {'regionid': region.regionid}) }}" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i>Modifier</a>
+                                <a href="{{ path('region_delete', {'regionid': region.regionid}) }}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i>Supprimer</a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="4">no records found</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
     {# <a href="{{ path('region_new') }}">Ajouter</a> #}
 {% endblock %}

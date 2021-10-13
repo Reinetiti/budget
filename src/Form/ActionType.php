@@ -17,22 +17,25 @@ class ActionType extends AbstractType
     {
         $builder
             ->add('actioncode', TextType::class,[
-                'label'=>'Code action',
+                'label'=>'Code',
                 'attr' => [
-                    'class'=>'appearance-none border rounded w-full py-2 px-3 text-grey-darker'
+                    'class'=>'form-control cc-name valid'
+                    // 'class'=>'appearance-none border rounded w-full py-2 px-3 text-grey-darker'
                 ],
             ])
             ->add('libaction', TextType::class,[
-                'label'=>'Libelé action',
+                'label'=>'Libelé',
                 'attr' => [
-                    'class'=>'appearance-none border rounded w-full py-2 px-3 text-grey-darker'
+                    'class'=>'form-control cc-name valid'
+                    // 'class'=>'appearance-none border rounded w-full py-2 px-3 text-grey-darker'
                  ],
             ])
             ->add('programmeid', EntityType::class,[
                 'class'=>Programme::class,
                 'label'=>'Programme',
                 'attr' => [
-                    'class'=>'appearance-none border rounded w-full py-2 px-3 text-grey-darker'
+                    'class'=>'form-control cc-name valid'
+                    // 'class'=>'appearance-none border rounded w-full py-2 px-3 text-grey-darker'
                 ],
             ])
         ;

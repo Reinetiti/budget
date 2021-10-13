@@ -15,17 +15,19 @@ class ArticleType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('libarticle',TextType::class,[
-                'label'=>'Libelé Article',
-                'attr' => [
-                    'class'=>'appearance-none border rounded w-full py-2 px-3 text-grey-darker'
-                ],    
-            ])
             ->add('articlecode',TextType::class,[
-                'label'=>'Code Article',
+                'label'=>'Code',
                 'attr' => [
-                    'class'=>'appearance-none border rounded w-full py-2 px-3 text-grey-darker'
+                    'class'=>'form-control cc-name valid'
+                    // 'class'=>'appearance-none border rounded w-full py-2 px-3 text-grey-darker'
                 ],
+            ])
+            ->add('libarticle',TextType::class,[
+                'label'=>'Libellé',
+                'attr' => [
+                    'class'=>'form-control cc-name valid'
+                    // 'class'=>'appearance-none border rounded w-full py-2 px-3 text-grey-darker'
+                ],    
             ])
         ;
     }

@@ -3,7 +3,7 @@
 {% block title %}Champ de compétence{% endblock %}
 
 {% block body %}
-    <h1>Champ de compétence</h1>
+    <h1 class="text-center">Champ de compétence</h1>
 
     <table class="table">
         <tbody>
@@ -26,7 +26,7 @@
         </tbody>
     </table>
 
-    <a href="{{ path('champcompetence_index') }}">retour à la liste</a>
+    <a href="{{ path('champcompetence_index') }}" class="btn btn-secondary btn-sm">retour à la liste</a>
 
     <a href="{{ path('champcompetence_edit', {'competenceid': champcompetence.competenceid}) }}">modifier</a>
 

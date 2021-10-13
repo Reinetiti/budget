@@ -3,9 +3,11 @@
 {% block title %}Nouvelle Division{% endblock %}
 
 {% block body %}
+<div class="card p-3 align-items-center">
     <h1>Créer une nouvelle Division</h1>
 
     {{ include('division/_form.html.twig') }}
 
-    <a href="{{ path('division_index') }}">retour à la liste</a>
+    <a href="{{ path('division_index') }}" class="btn btn-primary btn-sm">Retour à la liste</a>
+</div>
 {% endblock %}

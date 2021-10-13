@@ -14,16 +14,18 @@ class TypebudgetType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('typebudgetcode', TextType::class,[
+                'label'=>'Code',
+                'attr' => [
+                    'class'=>'form-control cc-name valid'
+                    // 'class'=>'appearance-none border rounded w-full py-2 px-3 text-grey-darker'
+                ],
+            ])
             ->add('libtypebudget', TextType::class,[
                 'label'=>'Libellé',
                 'attr' => [
-                    'class'=>'appearance-none border rounded w-full py-2 px-3 text-grey-darker'
-                ],
-            ])
-            ->add('typebudgetcode', TextType::class,[
-                'label'=>'Type de Budget',
-                'attr' => [
-                    'class'=>'appearance-none border rounded w-full py-2 px-3 text-grey-darker'
+                    'class'=>'form-control cc-name valid'
+                    // 'class'=>'appearance-none border rounded w-full py-2 px-3 text-grey-darker'
                 ],
             ])
         ;

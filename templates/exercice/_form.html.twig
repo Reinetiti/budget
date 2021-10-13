@@ -1,4 +1,6 @@
-{{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Enregistrer') }}</button>
-{{ form_end(form) }}
+<div class="card p-3 align-items-center">
+    {{ form_start(form) }}
+        {{ form_widget(form) }}<br>
+        <button class="btn btn-secondary btn-sm">{{ button_label|default('Enregistrer') }}</button>
+    {{ form_end(form) }}
+</div>

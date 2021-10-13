@@ -19,14 +19,16 @@ class MandatType extends AbstractType
             ->add('montantMandat', IntegerType::class,[
                 'label'=>'Montant',
                 'attr' => [
-                    'class'=>'appearance-none border rounded w-full py-2 px-3 text-grey-darker'
+                    'class'=>'form-control cc-name valid'
+                    // 'class'=>'appearance-none border rounded w-full py-2 px-3 text-grey-darker'
                 ],
             ])
             ->add('numProjet', EntityType::class,[
                 'class'=>ProjetMandat::class,
                 'label'=>'N° du projet de mandatement',
                 'attr' => [
-                    'class'=>'appearance-none border rounded w-full py-2 px-3 text-grey-darker'
+                    'class'=>'form-control cc-name valid'
+                    // 'class'=>'appearance-none border rounded w-full py-2 px-3 text-grey-darker'
                 ],
             ])
         ;

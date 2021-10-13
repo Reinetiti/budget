@@ -3,9 +3,11 @@
 {% block title %}Nouvelle action{% endblock %}
 
 {% block body %}
+<div class="card p-3 align-items-center"></div>
     <h1>Créer une nouvelle action</h1>
 
     {{ include('action/_form.html.twig') }}
 
-    <a href="{{ path('action_index') }}">retour à la liste</a>
+    <a href="{{ path('action_index') }}" class="btn btn-secondary btn-sm">Retour à la liste</a>
+</div>
 {% endblock %}

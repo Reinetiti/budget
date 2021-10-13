@@ -1,39 +1,66 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Division index{% endblock %}
+{% block title %}Division{% endblock %}
 
 {% block body %}
-    <h1>Division index</h1>
-
-    <a href="{{ path('division_new') }}" class="btn">Ajouter</a>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>N°</th>
-                <th>Libelé de la division</th>
-                <th>Code de la division</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for division in divisions %}
-            <tr>
-                <td>{{ division.divisionid }}</td>
-                <td>{{ division.libdivision }}</td>
-                <td>{{ division.divisioncode }}</td>
-                <td>
-                    <a href="{{ path('division_show', {'divisionid': division.divisionid}) }}">Afficher</a>
-                    <a href="{{ path('division_edit', {'divisionid': division.divisionid}) }}">Modifier</a>
-                    <a href="{{ path('division_delete', {'divisionid': division.divisionid}) }}">Supprimer</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h1 class="text-center">Division</h1>
+                <a href="{{ path('division_new') }}" class="btn btn-primary btn-sm">Ajouter</a>
+            </div>
+            <div class="card-body table-responsive p-0" style="height: 300px;">
+                <table class="table table-head-fixed text-nowrap">
+                    <thead>
+                        <tr>
+                            <th>N°</th>
+                            <th>Libelé de la division</th>
+                            <th>Code de la division</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for division in divisions %}
+                        <tr>
+                            {# {% if division.divisionid | length < 2 %}
+                                <td>0{{ division.divisionid }}</td>
+                            {% else %}
+                                <td>{{ division.divisionid }}</td>
+                            {% endif %} #}
+                            
+                            {% division.divisionid | length = int %}
+                            {% switch  int %}
+                            
+                                {% case "int < 3" %}
+                                    <td>00{{ division.divisionid }}</td>
+                            
+                                {% case "int < 2" %}
+                                    <td>0{{ division.divisionid }}</td>
+                            
+                                {% default %}
+                                
+                            
+                            {% endswitch %}
+                            
+                            <td>{{ division.libdivision }}</td>
+                            <td>{{ division.divisioncode }}</td>
+                            <td>
+                                <a href="{{ path('division_show', {'divisionid': division.divisionid}) }}" class="btn btn-info btn-sm"><i class="fa fa-eye"></i>Afficher</a>
+                                <a href="{{ path('division_edit', {'divisionid': division.divisionid}) }}" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i>Modifier</a>
+                                <a href="{{ path('division_delete', {'divisionid': division.divisionid}) }}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i>Supprimer</a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="4">no records found</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
     {# <a href="{{ path('division_new') }}">Créer un nouveau</a> #}
 {% endblock %}

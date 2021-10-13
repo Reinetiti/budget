@@ -1,41 +1,66 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Programme index{% endblock %}
+{% block title %}Programme{% endblock %}
 
 {% block body %}
-    <h1>Programme index</h1>
-
-    <a href="{{ path('programme_new') }}" class="btn">Ajouter</a>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>N°</th>
-                <th>Libelé du programme</th>
-                <th>Code du programme</th>
-                <th>Mission budgetaire</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for programme in programmes %}
-            <tr>
-                <td>{{ programme.programmeid }}</td>
-                <td>{{ programme.libprogramme }}</td>
-                <td>{{ programme.programmecode }}</td>
-                <td>{{ programme.misbudgetid }}</td>
-                <td>
-                    <a href="{{ path('programme_show', {'programmeid': programme.programmeid}) }}">Afficher</a>
-                    <a href="{{ path('programme_edit', {'programmeid': programme.programmeid}) }}">Modifier</a>
-                    <a href="{{ path('programme_delete', {'programmeid': programme.programmeid}) }}">Supprimer</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h1 class="text-center">Programme</h1>
+                <a href="{{ path('programme_new') }}" class="btn btn-primary btn-sm">Ajouter</a>
+            </div>
+            <div class="card-body table-responsive p-0" style="height: 300px;">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>N°</th>
+                            <th>Libelé du programme</th>
+                            <th>Code du programme</th>
+                            <th>Mission budgetaire</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for programme in programmes %}
+                        <tr>
+                            {% if programme.misbudgetid.misetatid.misetatid | length < 2 and programme.misbudgetid.misbudgetid | length < 2 and programme.programmeid | length < 3 %}
+                                <td>0{{ programme.misbudgetid.misetatid.misetatid }}0{{ programme.misbudgetid.misbudgetid }}00{{ programme.programmeid }}</td>
+                            {% elseif programme.misbudgetid.misbudgetid | length < 2 and programme.programmeid | length < 3 %}
+                                <td>{{ programme.misbudgetid.misetatid.misetatid }}0{{ programme.misbudgetid.misbudgetid }}00{{ programme.programmeid }}</td>
+                            {% elseif programme.programmeid | length < 3 %}
+                                <td>{{ programme.misbudgetid.misetatid.misetatid }}{{ programme.misbudgetid.misbudgetid }}00{{ programme.programmeid }}</td>
+                            {% elseif programme.misbudgetid.misbudgetid | length < 2 %}
+                                <td>{{ programme.misbudgetid.misetatid.misetatid }}0{{ programme.misbudgetid.misbudgetid }}{{ programme.programmeid }}</td>
+                            {% elseif programme.misbudgetid.misetatid.misetatid | length < 2 and programme.misbudgetid.misbudgetid | length < 2 and programme.programmeid | length < 2 %}
+                                <td>0{{ programme.misbudgetid.misetatid.misetatid }}0{{ programme.misbudgetid.misbudgetid }}0{{ programme.programmeid }}</td>
+                            {% elseif programme.misbudgetid.misbudgetid | length < 2 and programme.programmeid | length < 2 %}
+                                <td>{{ programme.misbudgetid.misetatid.misetatid }}0{{ programme.misbudgetid.misbudgetid }}0{{ programme.programmeid }}</td>
+                            {% elseif programme.programmeid | length < 2 %}
+                                <td>{{ programme.misbudgetid.misetatid.misetatid }}{{ programme.misbudgetid.misbudgetid }}0{{ programme.programmeid }}</td>
+                            {% else %}
+                                <td>{{ programme.misbudgetid.misetatid.misetatid }}{{ programme.misbudgetid.misbudgetid }}{{ programme.programmeid }}</td>
+                            {% endif %}
+                            {# <td>{{ programme.misbudgetid.misetatid.misetatid }}{{ programme.misbudgetid.misbudgetid }}{{ programme.programmeid }}</td> #}
+                            <td>{{ programme.libprogramme }}</td>
+                            <td>{{ programme.programmecode }}</td>
+                            <td>{{ programme.misbudgetid }}</td>
+                            <td>
+                                <a href="{{ path('programme_show', {'programmeid': programme.programmeid}) }}" class="btn btn-info btn-sm"><i class="fa fa-eye"></i>Afficher</a>
+                                <a href="{{ path('programme_edit', {'programmeid': programme.programmeid}) }}" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i>Modifier</a>
+                                <a href="{{ path('programme_delete', {'programmeid': programme.programmeid}) }}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i>Supprimer</a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="4">no records found</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
     {# <a href="{{ path('programme_new') }}">Créer un nouveau</a> #}
 {% endblock %}

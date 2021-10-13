@@ -3,9 +3,11 @@
 {% block title %}Type de budget{% endblock %}
 
 {% block body %}
+<div class="card p-3 align-items-center">
     <h1>Type de budget</h1>
 
     {{ include('typebudget/_form.html.twig') }}
 
-    <a href="{{ path('typebudget_index') }}">retour à la liste</a>
+    <a href="{{ path('typebudget_index') }}" class="btn btn-primary btn-sm">Retour à la liste</a>
+</div>
 {% endblock %}

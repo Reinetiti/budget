@@ -3,11 +3,12 @@
 {% block title %}Edit Champcompetence{% endblock %}
 
 {% block body %}
-    <h1>Edit Champcompetence</h1>
+    <h1 class="text-center">Edit Champcompetence</h1>
+<div class="card p-3 align-items-center">
+    {{ include('champcompetence/_form.html.twig', {'button_label': 'Mise à jour'}) }}<br>
 
-    {{ include('champcompetence/_form.html.twig', {'button_label': 'Mise à jour'}) }}
-
-    <a href="{{ path('champcompetence_index') }}">retour à la liste</a>
+    <a href="{{ path('champcompetence_index') }}" class="btn btn-secondary btn-sm">Retour à la liste</a><br>
 
     {{ include('champcompetence/_delete_form.html.twig') }}
+</div>
 {% endblock %}

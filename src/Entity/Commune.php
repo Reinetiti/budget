@@ -56,7 +56,7 @@ class Commune
 
     public function __toString(){
         return(string)
-        $this->getCommuneid();
+        $this->getLibcommune();
     }
 
     public function __construct()

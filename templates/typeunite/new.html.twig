@@ -3,9 +3,11 @@
 {% block title %}Type d'unité{% endblock %}
 
 {% block body %}
+<div class="card p-3 align-items-center">
     <h1>Type d'unité</h1>
 
     {{ include('typeunite/_form.html.twig') }}
 
-    <a href="{{ path('typeunite_index') }}">retour à la liste</a>
+    <a href="{{ path('typeunite_index') }}" class="btn btn-primary btn-sm">Retour à la liste</a>
+</div>
 {% endblock %}

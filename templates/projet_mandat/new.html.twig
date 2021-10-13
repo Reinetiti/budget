@@ -3,9 +3,11 @@
 {% block title %}Nouveau Projet de Mandatement{% endblock %}
 
 {% block body %}
+<div class="card p-3 align-items-center">
     <h1>Créer un nouveau Projet de Mandatement</h1>
 
     {{ include('projet_mandat/_form.html.twig') }}
 
-    <a href="{{ path('projet_mandat_index') }}">retour à la liste</a>
+    <a href="{{ path('projet_mandat_index') }}" class="btn btn-primary btn-sm">Retour à la liste</a>
+</div>
 {% endblock %}

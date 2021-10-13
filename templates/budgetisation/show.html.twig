@@ -3,7 +3,7 @@
 {% block title %}Budgetisation{% endblock %}
 
 {% block body %}
-    <h1>Budgetisation</h1>
+    <h1 class="text-center">Budgetisation</h1>
 
     <table class="table">
         <tbody>
@@ -22,7 +22,7 @@
         </tbody>
     </table>
 
-    <a href="{{ path('budgetisation_index') }}" class="btn">retour à la liste</a>
+    <a href="{{ path('budgetisation_index') }}" class="btn btn-secondary btn-sm">Retour à la liste</a>
 
     <a href="{{ path('budgetisation_edit', {'id': budgetisation.id}) }}" class="btn">Modifier</a>
 

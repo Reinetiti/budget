@@ -3,7 +3,7 @@
 {% block title %}Classe{% endblock %}
 
 {% block body %}
-    <h1>Classe</h1>
+    <h1 class="text-center">Classe</h1>
 
     <table class="table">
         <tbody>
@@ -26,9 +26,9 @@
         </tbody>
     </table>
 
-    <a href="{{ path('classe_index') }}">retour à la liste</a>
+    <a href="{{ path('classe_index') }}" class="btn">Retour à la liste</a>
 
-    <a href="{{ path('classe_edit', {'classeid': classe.classeid}) }}">modifier</a>
+    <a href="{{ path('classe_edit', {'classeid': classe.classeid}) }}" class="btn">Modifier</a>
 
     {{ include('classe/_delete_form.html.twig') }}
 {% endblock %}

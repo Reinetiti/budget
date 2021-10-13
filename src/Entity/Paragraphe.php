@@ -56,7 +56,7 @@ class Paragraphe
 
     public function __toString(){
         return(string)
-        $this->getParagrapheid();
+        $this->getLibparagraphe();
     }
 
     public function __construct()

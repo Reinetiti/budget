@@ -1,41 +1,57 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Commune index{% endblock %}
+{% block title %}Commune{% endblock %}
 
 {% block body %}
-    <h1>Commune index</h1>
-
-    <a href="{{ path('commune_new') }}" class="btn">Ajouter</a>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>N°</th>
-                <th>Libelé de la commune</th>
-                <th>Code de la commune</th>
-                <th>Département</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for commune in communes %}
-            <tr>
-                <td>{{ commune.communeid }}</td>
-                <td>{{ commune.libcommune }}</td>
-                <td>{{ commune.communecode }}</td>
-                <td>{{ commune.depid }}</td>
-                <td>
-                    <a href="{{ path('commune_show', {'communeid': commune.communeid}) }}">Afficher</a>
-                    <a href="{{ path('commune_edit', {'communeid': commune.communeid}) }}">Modifier</a>
-                    <a href="{{ path('commune_delete', {'communeid': commune.communeid}) }}">Supprimer</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h1 class="text-center">Commune</h1>
+                <a href="{{ path('commune_new') }}" class="btn btn-primary btn-sm">Ajouter</a>
+            </div>
+            <div class="card-body table-responsive p-0" style="height: 300px;">
+                <table class="table table-head-fixed text-nowrap">
+                    <thead>
+                        <tr>
+                            <th>N°</th>
+                            <th>Libelé de la commune</th>
+                            <th>Code de la commune</th>
+                            <th>Département</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for commune in communes %}
+                        <tr>
+                            {% if commune.depid.regionid.regionid | length < 2 and commune.depid.depid | length < 2 and commune.communeid | length < 2 %}
+                                <td>0{{ commune.depid.regionid.regionid }}0{{ commune.depid.depid }}0{{ commune.communeid }}</td>
+                            {% elseif commune.depid.depid | length < 2 and commune.communeid | length < 2 %}
+                                <td>{{ commune.depid.regionid.regionid }}0{{ commune.depid.depid }}0{{ commune.communeid }}</td>
+                            {% elseif commune.communeid | length < 2 %}
+                                <td>{{ commune.depid.regionid.regionid }}{{ commune.depid.depid }}0{{ commune.communeid }}</td>
+                            {% else %}
+                                <td>{{ commune.depid.regionid.regionid }}{{ commune.depid.depid }}{{ commune.communeid }}</td>
+                            {% endif %}
+                            <td>{{ commune.libcommune }}</td>
+                            <td>{{ commune.communecode }}</td>
+                            <td>{{ commune.depid }}</td>
+                            <td>
+                                <a href="{{ path('commune_show', {'communeid': commune.communeid}) }}" class="btn btn-info btn-sm"><i class="fa fa-eye"></i>Afficher</a>
+                                <a href="{{ path('commune_edit', {'communeid': commune.communeid}) }}" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i>Modifier</a>
+                                <a href="{{ path('commune_delete', {'communeid': commune.communeid}) }}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i>Supprimer</a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="4">no records found</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
     {# <a href="{{ path('commune_new') }}">Créer un nouveau</a> #}
 {% endblock %}

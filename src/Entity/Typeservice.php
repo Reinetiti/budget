@@ -46,7 +46,7 @@ class Typeservice
 
     public function __toString(){
         return (string)
-        $this->getServiceid();
+        $this->getLibservice();
     }
 
     public function __construct()

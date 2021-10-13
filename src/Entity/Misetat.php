@@ -46,7 +46,7 @@ class Misetat
 
     public function __toString(){
         return (string)
-        $this->getMisetatid();
+        $this->getLibmisetat();
     }
 
     public function __construct()

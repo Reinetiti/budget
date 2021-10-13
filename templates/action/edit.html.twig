@@ -3,17 +3,18 @@
 {% block title %}Editer l'action{% endblock %}
 
 {% block body %}
-<div class="container">
-        <div class="row">
-            <div class="col s12 m12 l12">
-                <h1>Modification de l'action</h1>
-            </div>
-        </div>
+{# <div class="container"> #}
+        {# <div class="row"> #}
+            {# <div class="col s12 m12 l12"> #}
+                <h1 class="text-center">Modifier l'action</h1>
+            {# </div> #}
+        {# </div> #}
 
     {# <h1>Editer l'action</h1> #}
-    {{ include('action/_form.html.twig', {'button_label': 'Mise à jour'}) }}
+<div class="card p-3 align-items-center">
+    {{ include('action/_form.html.twig', {'button_label': 'Mise à jour'}) }}<br>
 
-    <a href="{{ path('action_index') }}" class="btn">retour à la liste</a>
+    <a href="{{ path('action_index') }}" class="btn btn-secondary btn-sm">Retour à la liste</a><br>
 
     {{ include('action/_delete_form.html.twig') }}
 </div>

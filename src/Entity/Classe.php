@@ -56,7 +56,7 @@ class Classe
 
     public function __toString(){
         return(string)
-        $this->getClasseid();
+        $this->getLibclasse();
     }
 
     public function __construct()

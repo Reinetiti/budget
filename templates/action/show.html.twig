@@ -3,7 +3,7 @@
 {% block title %}Action{% endblock %}
 
 {% block body %}
-    <h1>Affichage d'une action</h1>
+    <h1 class="text-center">Affichage d'une action</h1>
 
     <table class="table">
         <tbody>
@@ -26,7 +26,7 @@
         </tbody>
     </table>
 
-    <a href="{{ path('action_index') }}" class="btn">retour à la liste</a>
+    <a href="{{ path('action_index') }}" class="btn btn-secondary btn-sm">retour à la liste</a>
 
     <a href="{{ path('action_edit', {'actionid': action.actionid}) }}" class="btn">Modifier</a>
 

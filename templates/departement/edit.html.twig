@@ -4,10 +4,11 @@
 
 {% block body %}
     <h1>Modifier le Département</h1>
+<div class="card p-3 align-items-center">
+    {{ include('departement/_form.html.twig', {'button_label': 'Mise à jour'}) }}<br>
 
-    {{ include('departement/_form.html.twig', {'button_label': 'Mise à jour'}) }}
-
-    <a href="{{ path('departement_index') }}">retour à la liste</a>
+    <a href="{{ path('departement_index') }}" class="btn btn-primary btn-sm">Retour à la liste</a><br>
 
     {{ include('departement/_delete_form.html.twig') }}
+</div>
 {% endblock %}

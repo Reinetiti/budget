@@ -1,39 +1,47 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Typeservice index{% endblock %}
+{% block title %}Type de service{% endblock %}
 
 {% block body %}
-    <h1>Typeservice index</h1>
-
-    <a href="{{ path('typeservice_new') }}" class="btn">Ajouter</a>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>N°</th>
-                <th>Libelé du service</th>
-                <th>Code du service</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for typeservice in typeservices %}
-            <tr>
-                <td>{{ typeservice.serviceid }}</td>
-                <td>{{ typeservice.libservice }}</td>
-                <td>{{ typeservice.servicecode }}</td>
-                <td>
-                    <a href="{{ path('typeservice_show', {'serviceid': typeservice.serviceid}) }}">Afficher</a>
-                    <a href="{{ path('typeservice_edit', {'serviceid': typeservice.serviceid}) }}">Modifier</a>
-                    <a href="{{ path('typeservice_delete', {'serviceid': typeservice.serviceid}) }}">Supprimer</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h1 class="text-center">Type de service</h1>
+                <a href="{{ path('typeservice_new') }}" class="btn btn-primary btn-sm">Ajouter</a>
+            </div>
+            <div class="card-body table-responsive p-0" style="height: 300px;">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>N°</th>
+                            <th>Libelé du service</th>
+                            <th>Code du service</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for typeservice in typeservices %}
+                        <tr>
+                            <td>{{ typeservice.serviceid }}</td>
+                            <td>{{ typeservice.libservice }}</td>
+                            <td>{{ typeservice.servicecode }}</td>
+                            <td>
+                                <a href="{{ path('typeservice_show', {'serviceid': typeservice.serviceid}) }}" class="btn btn-info btn-sm"><i class="fa fa-eye"></i>Afficher</a>
+                                <a href="{{ path('typeservice_edit', {'serviceid': typeservice.serviceid}) }}" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i>Modifier</a>
+                                <a href="{{ path('typeservice_delete', {'serviceid': typeservice.serviceid}) }}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i>Supprimer</a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="4">no records found</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
     {# <a href="{{ path('typeservice_new') }}">Ajouter</a> #}
 {% endblock %}

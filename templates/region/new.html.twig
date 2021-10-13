@@ -3,9 +3,11 @@
 {% block title %}Nouvelle Région{% endblock %}
 
 {% block body %}
+<div class="card p-3 align-items-center">
     <h1>Créer une nouvelle Région</h1>
 
     {{ include('region/_form.html.twig') }}
 
-    <a href="{{ path('region_index') }}">retour à la liste</a>
+    <a href="{{ path('region_index') }}" class="btn btn-primary btn-sm">Retour à la liste</a>
+</div>
 {% endblock %}

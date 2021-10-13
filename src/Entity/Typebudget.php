@@ -46,7 +46,7 @@ class Typebudget
 
     public function __toString(){
         return(string)
-        $this->getTypebudgetid();
+        $this->getLibtypebudget();
     }
 
     public function __construct()

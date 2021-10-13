@@ -1,41 +1,70 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Action index{% endblock %}
+{% block title %}Action{% endblock %}
 
 {% block body %}
-    <h1>Action</h1>
-
-    <a href="{{ path('action_new') }}" class="btn">Ajouter</a>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>N°</th>
-                <th>Code de l'action</th>
-                <th>Libelé de action</th>
-                <th>Programme</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for action in actions %}
-            <tr>programmeid
-                <td>{{ action.actionid }}</td>
-                <td>{{ action.actioncode }}</td>
-                <td>{{ action.libaction }}</td>
-                <td>{{ action.programmeid }}</td>
-                <td>
-                    <a href="{{ path('action_show', {'actionid': action.actionid}) }}" class="btn">Afficher</a>
-                    <a href="{{ path('action_edit', {'actionid': action.actionid}) }}" class="btn">Modifier</a>
-                    <a href="{{ path('action_delete', {'actionid': action.actionid}) }}" class="btn">Supprimer</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h1 class="text-center">Action</h1>
+                <a href="{{ path('action_new') }}" class="btn btn-primary btn-sm">Ajouter</a>
+            </div>
+            <div class="card-body table-responsive p-0" style="height: 300px;">
+                    <table class="table table-head-fixed text-nowrap">
+                        <thead>
+                            <tr>
+                                <th>N°</th>
+                                <th>Code de l'action</th>
+                                <th>Libelé de action</th>
+                                <th>Programme</th>
+                                {# <th>Concaténation</th> #}
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for action in actions %}
+                            <tr>
+                            {% if action.programmeid.misbudgetid.misetatid.misetatid | length < 2 and action.programmeid.misbudgetid.misbudgetid | length < 2 and  action.programmeid.programmeid | length < 2 and action.actionid | length < 3 %}
+                                <td>0{{ action.programmeid.misbudgetid.misetatid.misetatid }}0{{ action.programmeid.misbudgetid.misbudgetid }}0{{action.programmeid.programmeid}}00{{ action.actionid }}</td>
+                            {% elseif action.programmeid.misbudgetid.misbudgetid | length < 2 and  action.programmeid.programmeid | length < 2 and action.actionid | length < 3 %}
+                                <td>{{ action.programmeid.misbudgetid.misetatid.misetatid }}0{{ action.programmeid.misbudgetid.misbudgetid }}0{{action.programmeid.programmeid}}00{{ action.actionid }}</td>
+                            {% elseif action.programmeid.programmeid | length < 2 and action.actionid | length < 3 %}
+                                <td>{{ action.programmeid.misbudgetid.misetatid.misetatid }}{{ action.programmeid.misbudgetid.misbudgetid }}0{{action.programmeid.programmeid}}00{{ action.actionid }}</td>
+                            {% elseif action.actionid | length < 3 %}
+                                <td>{{ action.programmeid.misbudgetid.misetatid.misetatid }}{{ action.programmeid.misbudgetid.misbudgetid }}{{action.programmeid.programmeid}}00{{ action.actionid }}</td>
+                            {% elseif action.programmeid.misbudgetid.misetatid.misetatid | length < 2 and action.programmeid.misbudgetid.misbudgetid | length < 2 and  action.programmeid.programmeid | length < 2 and action.actionid | length < 2 %}
+                                <td>0{{ action.programmeid.misbudgetid.misetatid.misetatid }}0{{ action.programmeid.misbudgetid.misbudgetid }}0{{action.programmeid.programmeid}}0{{ action.actionid }}</td>
+                            {% elseif action.programmeid.misbudgetid.misbudgetid | length < 2 and  action.programmeid.programmeid | length < 2 and action.actionid | length < 2 %}
+                                <td>{{ action.programmeid.misbudgetid.misetatid.misetatid }}0{{ action.programmeid.misbudgetid.misbudgetid }}0{{action.programmeid.programmeid}}0{{ action.actionid }}</td>
+                            {% elseif action.programmeid.programmeid | length < 2 and action.actionid | length < 2 %}
+                                <td>{{ action.programmeid.misbudgetid.misetatid.misetatid }}{{ action.programmeid.misbudgetid.misbudgetid }}0{{action.programmeid.programmeid}}0{{ action.actionid }}</td>
+                            {% elseif action.actionid | length < 2 %}
+                                <td>{{ action.programmeid.misbudgetid.misetatid.misetatid }}{{ action.programmeid.misbudgetid.misbudgetid }}{{action.programmeid.programmeid}}0{{ action.actionid }}</td>
+                            {% else %}
+                                <td>{{ action.programmeid.misbudgetid.misetatid.misetatid }}{{ action.programmeid.misbudgetid.misbudgetid }}{{action.programmeid.programmeid}}{{ action.actionid }}</td>
+                            {% endif %}
+                                <td>{{ action.actioncode }}</td>
+                                <td>{{ action.libaction }}</td>
+                                <td>{{ action.programmeid }}</td>
+                                {# <td>{{action.actionid}}{{action.programmeid}}</td> #}
+                                <td>
+                                    <a href="{{ path('action_show', {'actionid': action.actionid}) }}" class="btn btn-info btn-sm"><i class="fa fa-eye"></i>Afficher</a>
+                                    <a href="{{ path('action_edit', {'actionid': action.actionid}) }}"class="btn btn-warning btn-sm"><i class="fa fa-edit"></i>Modifier</a>
+                                    <a href="{{ path('action_delete', {'actionid': action.actionid}) }}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i>Supprimer</a>
+                                </td>
+                                
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="4">no records found</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+            </div>    
+        </div>
+    </div>
+</div>        
     {# <a href="{{ path('action_new') }}">Ajouter</a> #}
 {% endblock %}

@@ -56,7 +56,7 @@ class Rubrique
 
     public function __toString(){
         return(string)
-        $this->getRubriqueid();
+        $this->getLibrubrique();
     }
 
     public function __construct()

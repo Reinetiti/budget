@@ -56,7 +56,7 @@ class Misbudget
 
     public function __toString(){
         return(string)
-        $this->getMisbudgetid();
+        $this->getLibmisbudget();
     }
 
     public function __construct()

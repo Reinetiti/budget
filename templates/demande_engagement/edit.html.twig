@@ -4,10 +4,11 @@
 
 {% block body %}
     <h1>Modifier la Demande d'Engagement</h1>
+<div class="card p-3 align-items-center">
+    {{ include('demande_engagement/_form.html.twig', {'button_label': 'Mise à jour'}) }}<br>
 
-    {{ include('demande_engagement/_form.html.twig', {'button_label': 'Mise à jour'}) }}
-
-    <a href="{{ path('demande_engagement_index') }}">retour à la liste</a>
+    <a href="{{ path('demande_engagement_index') }}" class="btn btn-primary btn-sm">Retour à la liste</a><br>
 
     {{ include('demande_engagement/_delete_form.html.twig') }}
+</div>
 {% endblock %}

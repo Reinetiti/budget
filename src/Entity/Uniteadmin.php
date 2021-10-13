@@ -76,7 +76,7 @@ class Uniteadmin
 
     public function __toString(){
         return(string)
-        $this->getUniteid();
+        $this->getLibunite();
     }
 
     public function __construct()

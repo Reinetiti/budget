@@ -16,11 +16,11 @@
             {#{{ encore_entry_script_tags('app') }}#}
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
         {% endblock %}
-    </head>
-    <body>
+
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        {# fixed-top #}
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Navbar</a>
+            {# <a class="navbar-brand" href="#">Navbar</a> #}
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
@@ -29,9 +29,9 @@
                 <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="{{ path('home') }}">Accueil</a>
                 </li>
-                <li class="nav-item">
+                {# <li class="nav-item">
                 <a class="nav-link" href="#">Link</a>
-                </li>
+                </li> #}
                 <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Tables Budgétaires
@@ -54,7 +54,7 @@
                     <li><a class="dropdown-item" aria-current="page" href="{{ path('paragraphe_index') }}">Paragraphe</a></li>
                     <li><a class="dropdown-item" aria-current="page" href="{{ path('piece_justificative_index') }}">Piece Justificative</a></li>
                     <li><a class="dropdown-item" aria-current="page" href="{{ path('programme_index') }}">Programme</a></li>
-                    <li><a class="dropdown-item" aria-current="page" href="{{ path('region_index') }}">Region</a></li>
+                    <li><a class="dropdown-item" aria-current="page" href="{{ path('region_index') }}">Région</a></li>
                     <li><a class="dropdown-item" aria-current="page" href="{{ path('rubrique_index') }}">Rubrique</a></li>
                     <li><a class="dropdown-item" aria-current="page" href="{{ path('typebudget_index') }}">Type de budget</a></li>
                     <li><a class="dropdown-item" aria-current="page" href="{{ path('typepgram_index') }}">Type de programme</a></li>
@@ -81,15 +81,15 @@
                     Mandatement
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" aria-current="page" href="{{ path('mandat_index') }}">Mandat</a></li>
-                    <li><a class="dropdown-item" aria-current="page" href="{{ path('piece_justificative_index') }}">Piece Justificative</a></li>
-                    <li><a class="dropdown-item" aria-current="page" href="{{ path('projet_mandat_index') }}">Projet de mandatement</a></li>
+                    <li><a class="dropdown-item" aria-current="page" href="{{ path('mandat_index') }}">Mandatement</a></li>
+                    <li><a class="dropdown-item" aria-current="page" href="{{ path('piece_justificative_index') }}">Pièce Justificative</a></li>
+                    <li><a class="dropdown-item" aria-current="page" href="{{ path('projet_mandat_index') }}">Projet de Mandatement</a></li>
                     {# <li><hr class="dropdown-divider"></li> #}
                     {# <li><a class="dropdown-item" href="#">Something else here</a></li> #}
                 </ul>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                {# <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a> #}
                 </li>
                 </ul>
                 </li>
@@ -100,6 +100,8 @@
             </div>
         </div>
         </nav>
+    </head>
+    <body>
     
         {% block body %}{% endblock %}
     </body>

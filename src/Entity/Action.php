@@ -56,7 +56,7 @@ class Action
 
     public function __toString(){
         return(string)
-        $this->getActionid();
+        $this->getLibaction();
     }
 
     public function __construct()

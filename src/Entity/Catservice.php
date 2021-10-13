@@ -49,7 +49,7 @@ class Catservice
 
     public function __toString(){
         return(string)
-        $this->getCatid();
+        $this->getLibcat();
     }
 
     public function getCatid(): ?int

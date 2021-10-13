@@ -4,10 +4,11 @@
 
 {% block body %}
     <h1>Modifier la Région</h1>
+<div class="card p-3 align-items-center">
+    {{ include('region/_form.html.twig', {'button_label': 'Mise à jour'}) }}<br>
 
-    {{ include('region/_form.html.twig', {'button_label': 'Mise à jour'}) }}
-
-    <a href="{{ path('region_index') }}">retour à la liste</a>
+    <a href="{{ path('region_index') }}" class="btn btn-primary btn-sm">Retour à la liste</a><br>
 
     {{ include('region/_delete_form.html.twig') }}
+</div>
 {% endblock %}

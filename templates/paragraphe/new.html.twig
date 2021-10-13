@@ -3,9 +3,11 @@
 {% block title %}Nouvelle Paragraphe{% endblock %}
 
 {% block body %}
-    <h1>Créer une nouvelle Paragraphe</h1>
+    <div class="card p-3 align-items-center">
+        <h1>Créer une nouvelle Paragraphe</h1>
 
-    {{ include('paragraphe/_form.html.twig') }}
+        {{ include('paragraphe/_form.html.twig') }}
 
-    <a href="{{ path('paragraphe_index') }}">retour à la liste</a>
+        <a href="{{ path('paragraphe_index') }}" class="btn btn-primary btn-sm">Retour à la liste</a>
+    </div>
 {% endblock %}

@@ -3,37 +3,54 @@
 {% block title %}Article{% endblock %}
 
 {% block body %}
-    <h1>Article index</h1>
-
-    <a href="{{ path('article_new') }}" class="btn">Ajouter</a>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>N°</th>
-                <th>Libelé de l'article</th>
-                <th>Code de l'article</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for article in articles %}
-            <tr>
-                <td>{{ article.articleid }}</td>
-                <td>{{ article.libarticle }}</td>
-                <td>{{ article.articlecode }}</td>
-                <td>
-                    <a href="{{ path('article_show', {'articleid': article.articleid}) }}" class="btn">Afficher</a>
-                    <a href="{{ path('article_edit', {'articleid': article.articleid}) }}" class="btn">Modifier</a>
-                    <a href="{{ path('article_delete', {'articleid': article.articleid}) }}" class="btn">Supprimer</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
+{# card p-3 #}
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h1 class="text-center">Article</h4><hr>
+                <a href="{{ path('article_new') }}" class="btn btn-primary btn-sm">Ajouter</a>
+            </div>
+            <div class="card-body table-responsive p-0" style="height: 300px;">
+                <table class="table table-head-fixed text-nowrap">
+                    <thead>
+                        <tr>
+                            <th>N°</th>
+                            <th>Libelé de l'article</th>
+                            <th>Code de l'article</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for article in articles %}
+                        <tr>
+                        {% if (article.articleid | length < 2) %}
+                            <td>
+                            0{{ article.articleid }}
+                            </td>
+                        {% else %}
+                            <td>
+                            {{ article.articleid }}
+                            </td>
+                        {% endif %}
+                            <td>{{ article.libarticle }}</td>
+                            <td>{{ article.articlecode }}</td>
+                            <td>
+                                <a href="{{ path('article_show', {'articleid': article.articleid}) }}" class="btn btn-info btn-sm"><i class="fa fa-eye"></i>Afficher</a>
+                                <a href="{{ path('article_edit', {'articleid': article.articleid}) }}" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i>Modifier</a>
+                                <a href="{{ path('article_delete', {'articleid': article.articleid}) }}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i>Supprimer</a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="4">no records found</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>    
+</div>
     {# <a href="{{ path('article_new') }}">Ajouter</a> #}
 {% endblock %}

@@ -1,9 +1,10 @@
-{{ form_start(form) }}
-    {# <div class="form-group"> #}
-    <div style="text-align: center;">
-        {{ form_widget(form) }}
-     
-        <button class="btn">{{ button_label|default('Enregistrer') }}</button>
-    </div>
-{{ form_end(form) }}
+<div class="card p-3 align-items-center">
+    {{ form_start(form) }}
+        {# <div class="form-group"> #}
+        {# <div style="text-align: center;"> #}
+            {{ form_widget(form) }}<br>
+        
+            <button class="btn btn-secondary btn-sm">{{ button_label|default('Enregistrer') }}</button>
+    {{ form_end(form) }}
+</div>
  

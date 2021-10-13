@@ -4,10 +4,11 @@
 
 {% block body %}
     <h1>Modifier la Piece Justificative</h1>
+<div class="card p-3 align-items-center">
+    {{ include('piece_justificative/_form.html.twig', {'button_label': 'Mise à jour'}) }}<br>
 
-    {{ include('piece_justificative/_form.html.twig', {'button_label': 'Mise à jour'}) }}
-
-    <a href="{{ path('piece_justificative_index') }}">retour à la liste</a>
+    <a href="{{ path('piece_justificative_index') }}" class="btn btn-primary btn-sm">Retour à la liste</a><br>
 
     {{ include('piece_justificative/_delete_form.html.twig') }}
+</div>
 {% endblock %}

@@ -3,39 +3,55 @@
 {% block title %}Département{% endblock %}
 
 {% block body %}
-    <h1>Département</h1>
-
-    <a href="{{ path('departement_new') }}" class="btn">Ajouter</a>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>N°</th>
-                <th>Libelé du département</th>
-                <th>Code du département</th>
-                <th>Région</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for departement in departements %}
-            <tr>
-                <td>{{ departement.depid }}</td>
-                <td>{{ departement.libdep }}</td>
-                <td>{{ departement.depcode }}</td>
-                <td>{{ departement.regionid }}</td>
-                <td>
-                    <a href="{{ path('departement_show', {'depid': departement.depid}) }}">Afficher</a>
-                    <a href="{{ path('departement_edit', {'depid': departement.depid}) }}">Modifier</a>
-                    <a href="{{ path('departement_delete', {'depid': departement.depid}) }}">Supprimer</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h1 class="text-center">Département</h1>
+                <a href="{{ path('departement_new') }}" class="btn btn-primary btn-sm">Ajouter</a>
+            </div>
+            <div class="card-body table-responsive p-0" style="height: 300px;">
+                <table class="table table-head-fixed text-nowrap">
+                    <thead>
+                        <tr>
+                            <th class="text-center">N°</th>
+                            <th class="text-center">Libelé du département</th>
+                            <th class="text-center">Code du département</th>
+                            <th class="text-center">Région</th>
+                            <th class="text-center">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for departement in departements %}
+                        <tr>
+                            {% if departement.regionid.regionid | length < 2 and departement.depid | length < 2 %}
+                                <td>0{{ departement.regionid.regionid }}0{{ departement.depid }}</td>
+                            {% elseif departement.depid | length < 2 %}
+                                <td>{{ departement.regionid.regionid }}0{{ departement.depid }}</td>
+                            {% elseif departement.regionid.regionid | length < 2 %}
+                                <td>0{{ departement.regionid.regionid }}{{ departement.depid }}</td>
+                            {% else %}
+                                <td>{{ departement.regionid.regionid }}{{ departement.depid }}</td>
+                            {% endif %}
+                            <td>{{ departement.libdep }}</td>
+                            <td>{{ departement.depcode }}</td>
+                            <td>{{ departement.regionid }}</td>
+                            <td>
+                                <a href="{{ path('departement_show', {'depid': departement.depid}) }}" class="btn btn-info btn-sm"><i class="fa fa-eye"></i>Afficher</a>
+                                <a href="{{ path('departement_edit', {'depid': departement.depid}) }}" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i>Modifier</a>
+                                <a href="{{ path('departement_delete', {'depid': departement.depid}) }}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i>Supprimer</a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="4">no records found</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
     {# <a href="{{ path('departement_new') }}">Créer un nouveau</a> #}
 {% endblock %}

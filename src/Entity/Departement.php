@@ -56,7 +56,7 @@ class Departement
 
     public function __toString(){
         return(string)
-        $this->getDepid();
+        $this->getLibdep();
     }
 
     public function __construct()

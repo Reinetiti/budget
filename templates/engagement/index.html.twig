@@ -3,37 +3,45 @@
 {% block title %}Engagement{% endblock %}
 
 {% block body %}
-    <h1>Engagement</h1>
-
-    <a href="{{ path('engagement_new') }}" class="btn">Ajouter</a>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>N°</th>
-                <th>Montant</th>
-                <th>N° demande</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for engagement in engagements %}
-            <tr>
-                <td>{{ engagement.numEngagement }}</td>
-                <td>{{ engagement.montant }}</td>
-                <td>{{ engagement.numDemande }}</td>
-                <td>
-                    <a href="{{ path('engagement_show', {'numEngagement': engagement.numEngagement}) }}">Afficher</a>
-                    <a href="{{ path('engagement_edit', {'numEngagement': engagement.numEngagement}) }}">Modifier</a>
-                    <a href="{{ path('engagement_delete', {'numEngagement': engagement.numEngagement}) }}">Supprimer</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="3">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h1 class="text-center">Engagement</h1>
+                <a href="{{ path('engagement_new') }}" class="btn btn-primary btn-sm">Ajouter</a>
+            </div>
+            <div class="card-body table-responsive p-0" style="height: 300px;">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>N°</th>
+                            <th>Montant</th>
+                            <th>N° demande</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for engagement in engagements %}
+                        <tr>
+                            <td>{{ engagement.numEngagement }}</td>
+                            <td>{{ engagement.montant }}</td>
+                            <td>{{ engagement.numDemande }}</td>
+                            <td>
+                                <a href="{{ path('engagement_show', {'numEngagement': engagement.numEngagement}) }}" class="btn btn-info btn-sm"><i class="fa fa-eye"></i>Afficher</a>
+                                <a href="{{ path('engagement_edit', {'numEngagement': engagement.numEngagement}) }}" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i>Modifier</a>
+                                <a href="{{ path('engagement_delete', {'numEngagement': engagement.numEngagement}) }}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i>Supprimer</a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="3">no records found</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
     {# <a href="{{ path('engagement_new') }}">Ajouter</a> #}
 {% endblock %}

@@ -46,7 +46,7 @@ class Article
 
     public function __toString(){
         return (string)
-        $this->getArticleid();
+        $this->getLibarticle();
     }
 
     public function __construct()

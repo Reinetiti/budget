@@ -3,9 +3,11 @@
 {% block title %}Exercice{% endblock %}
 
 {% block body %}
+<div class="card p-3 align-items-center">
     <h1>Exercice</h1>
 
     {{ include('exercice/_form.html.twig') }}
 
-    <a href="{{ path('exercice_index') }}">retour à la liste</a>
+    <a href="{{ path('exercice_index') }}" class="btn btn-primary btn-sm">Retour à la liste</a>
+</div>
 {% endblock %}

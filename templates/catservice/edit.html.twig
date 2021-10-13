@@ -3,11 +3,12 @@
 {% block title %}Modifier la catégorie de service{% endblock %}
 
 {% block body %}
-    <h1>Modifier la catégorie de service</h1>
+    <h1 class="text-center">Modifier la catégorie de service</h1>
+<div class="card p-3 align-items-center">
+    {{ include('catservice/_form.html.twig', {'button_label': 'Mise à jour'}) }}<br>
 
-    {{ include('catservice/_form.html.twig', {'button_label': 'Mise à jour'}) }}
-
-    <a href="{{ path('catservice_index') }}">retour à la liste</a>
+    <a href="{{ path('catservice_index') }}" class="btn btn-secondary btn-sm">Retour à la liste</a><br>
 
     {{ include('catservice/_delete_form.html.twig') }}
+</div>
 {% endblock %}

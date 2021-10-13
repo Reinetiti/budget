@@ -3,9 +3,11 @@
 {% block title %}Nouveau article{% endblock %}
 
 {% block body %}
-    <h1>Créer un nouveau article</h1>
+    <div class="card p-3 align-items-center">
+        <h1>Créer un nouveau article</h1>
 
-    {{ include('article/_form.html.twig') }}
+        {{ include('article/_form.html.twig') }}<br>
 
-    <a href="{{ path('article_index') }}" class="btn">retour à la liste</a>
+        <a href="{{ path('article_index') }}" class="btn btn-secondary btn-sm">Retour à la liste</a>
+    </div>
 {% endblock %}

@@ -1,39 +1,51 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Misetat index{% endblock %}
+{% block title %}Mission d'Etat{% endblock %}
 
 {% block body %}
-    <h1>Misetat index</h1>
-
-    <a href="{{ path('misetat_new') }}" class="btn">Ajouter</a>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>N°</th>
-                <th>Libelé de la mission d'Etat</th>
-                <th>Code de la mission d'Etat</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for misetat in misetats %}
-            <tr>
-                <td>{{ misetat.misetatid }}</td>
-                <td>{{ misetat.libmisetat }}</td>
-                <td>{{ misetat.misetatcode }}</td>
-                <td>
-                    <a href="{{ path('misetat_show', {'misetatid': misetat.misetatid}) }}">Afficher</a>
-                    <a href="{{ path('misetat_edit', {'misetatid': misetat.misetatid}) }}">Modifier</a>
-                    <a href="{{ path('misetat_delete', {'misetatid': misetat.misetatid}) }}">Supprimer</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h1 class="text-center">Mission d'Etat</h1>
+                <a href="{{ path('misetat_new') }}" class="btn btn-primary btn-sm">Ajouter</a>
+            </div>
+            <div class="card-body table-responsive p-0" style="height: 300px;">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>N°</th>
+                            <th>Libelé de la mission d'Etat</th>
+                            <th>Code de la mission d'Etat</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for misetat in misetats %}
+                        <tr>
+                            {% if misetat.misetatid | length < 2 %}
+                                <td>0{{ misetat.misetatid }}</td>
+                            {% else %}
+                                <td>{{ misetat.misetatid }}</td>
+                            {% endif %}
+                            <td>{{ misetat.libmisetat }}</td>
+                            <td>{{ misetat.misetatcode }}</td>
+                            <td>
+                                <a href="{{ path('misetat_show', {'misetatid': misetat.misetatid}) }}" class="btn btn-info btn-sm"><i class="fa fa-eye"></i>Afficher</a>
+                                <a href="{{ path('misetat_edit', {'misetatid': misetat.misetatid}) }}" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i>Modifier</a>
+                                <a href="{{ path('misetat_delete', {'misetatid': misetat.misetatid}) }}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i>Supprimer</a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="4">no records found</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
     {# <a href="{{ path('misetat_new') }}">Ajouter</a> #}
 {% endblock %}

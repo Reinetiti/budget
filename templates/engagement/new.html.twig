@@ -3,9 +3,11 @@
 {% block title %}Nouveau Engagement{% endblock %}
 
 {% block body %}
+<div class="card p-3 align-items-center">
     <h1>Créer une nouveau Engagement</h1>
 
     {{ include('engagement/_form.html.twig') }}
 
-    <a href="{{ path('engagement_index') }}">retour à la liste</a>
+    <a href="{{ path('engagement_index') }}" class="btn btn-primary btn-sm">Retour à la liste</a>
+</div>
 {% endblock %}
