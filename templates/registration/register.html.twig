@@ -18,5 +18,8 @@
 
             <button type="submit" class="btn btn-secondary btn-sm">S'inscrire</button>
         {{ form_end(registrationForm) }}
+        {% if submit %}
+            <a href="{{ path('app_login') }}" class="btn btn-lg btn-primary"></a>
+        {% endif %}
     </div>
 {% endblock %}

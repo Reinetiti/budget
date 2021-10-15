@@ -2,56 +2,61 @@
 
 {% block title %}Action{% endblock %}
 
-{% block body %}
+{% block body %}<br>
 <div class="row">
     <div class="col-12">
         <div class="card">
-            <div class="card-header">
-                <h1 class="text-center">Action</h1>
+            <div class="card-header" style="background: #FFE4C4;">
+                <h4>Les Actions déja enregistrer</h4>
+            </div><br>
+            <div>
                 <a href="{{ path('action_new') }}" class="btn btn-primary btn-sm">Ajouter</a>
-            </div>
+            </div><br>
             <div class="card-body table-responsive p-0" style="height: 300px;">
-                    <table class="table table-head-fixed text-nowrap">
-                        <thead>
+                    <table  class="table table-head-fixed text-nowrap align-items-center">
+                        <thead class="floating-header entete" style="background: #C0C0C0;">
                             <tr>
-                                <th>N°</th>
-                                <th>Code de l'action</th>
-                                <th>Libelé de action</th>
-                                <th>Programme</th>
+                                <th class="text-center">N°</th>
+                                <th class="text-center">Code de l'action</th>
+                                <th class="text-center">Libelé de action</th>
+                                <th class="text-center">Programme</th>
                                 {# <th>Concaténation</th> #}
-                                <th>Actions</th>
+                                <th class="text-center">Opérations</th>
                             </tr>
                         </thead>
                         <tbody>
                         {% for action in actions %}
                             <tr>
                             {% if action.programmeid.misbudgetid.misetatid.misetatid | length < 2 and action.programmeid.misbudgetid.misbudgetid | length < 2 and  action.programmeid.programmeid | length < 2 and action.actionid | length < 3 %}
-                                <td>0{{ action.programmeid.misbudgetid.misetatid.misetatid }}0{{ action.programmeid.misbudgetid.misbudgetid }}0{{action.programmeid.programmeid}}00{{ action.actionid }}</td>
+                                <td class="text-center">0{{ action.programmeid.misbudgetid.misetatid.misetatid }}0{{ action.programmeid.misbudgetid.misbudgetid }}0{{action.programmeid.programmeid}}00{{ action.actionid }}</td>
                             {% elseif action.programmeid.misbudgetid.misbudgetid | length < 2 and  action.programmeid.programmeid | length < 2 and action.actionid | length < 3 %}
-                                <td>{{ action.programmeid.misbudgetid.misetatid.misetatid }}0{{ action.programmeid.misbudgetid.misbudgetid }}0{{action.programmeid.programmeid}}00{{ action.actionid }}</td>
+                                <td class="text-center">{{ action.programmeid.misbudgetid.misetatid.misetatid }}0{{ action.programmeid.misbudgetid.misbudgetid }}0{{action.programmeid.programmeid}}00{{ action.actionid }}</td>
                             {% elseif action.programmeid.programmeid | length < 2 and action.actionid | length < 3 %}
-                                <td>{{ action.programmeid.misbudgetid.misetatid.misetatid }}{{ action.programmeid.misbudgetid.misbudgetid }}0{{action.programmeid.programmeid}}00{{ action.actionid }}</td>
+                                <td class="text-center">{{ action.programmeid.misbudgetid.misetatid.misetatid }}{{ action.programmeid.misbudgetid.misbudgetid }}0{{action.programmeid.programmeid}}00{{ action.actionid }}</td>
                             {% elseif action.actionid | length < 3 %}
-                                <td>{{ action.programmeid.misbudgetid.misetatid.misetatid }}{{ action.programmeid.misbudgetid.misbudgetid }}{{action.programmeid.programmeid}}00{{ action.actionid }}</td>
+                                <td class="text-center">{{ action.programmeid.misbudgetid.misetatid.misetatid }}{{ action.programmeid.misbudgetid.misbudgetid }}{{action.programmeid.programmeid}}00{{ action.actionid }}</td>
                             {% elseif action.programmeid.misbudgetid.misetatid.misetatid | length < 2 and action.programmeid.misbudgetid.misbudgetid | length < 2 and  action.programmeid.programmeid | length < 2 and action.actionid | length < 2 %}
-                                <td>0{{ action.programmeid.misbudgetid.misetatid.misetatid }}0{{ action.programmeid.misbudgetid.misbudgetid }}0{{action.programmeid.programmeid}}0{{ action.actionid }}</td>
+                                <td class="text-center">0{{ action.programmeid.misbudgetid.misetatid.misetatid }}0{{ action.programmeid.misbudgetid.misbudgetid }}0{{action.programmeid.programmeid}}0{{ action.actionid }}</td>
                             {% elseif action.programmeid.misbudgetid.misbudgetid | length < 2 and  action.programmeid.programmeid | length < 2 and action.actionid | length < 2 %}
-                                <td>{{ action.programmeid.misbudgetid.misetatid.misetatid }}0{{ action.programmeid.misbudgetid.misbudgetid }}0{{action.programmeid.programmeid}}0{{ action.actionid }}</td>
+                                <td class="text-center">{{ action.programmeid.misbudgetid.misetatid.misetatid }}0{{ action.programmeid.misbudgetid.misbudgetid }}0{{action.programmeid.programmeid}}0{{ action.actionid }}</td>
                             {% elseif action.programmeid.programmeid | length < 2 and action.actionid | length < 2 %}
-                                <td>{{ action.programmeid.misbudgetid.misetatid.misetatid }}{{ action.programmeid.misbudgetid.misbudgetid }}0{{action.programmeid.programmeid}}0{{ action.actionid }}</td>
+                                <td class="text-center">{{ action.programmeid.misbudgetid.misetatid.misetatid }}{{ action.programmeid.misbudgetid.misbudgetid }}0{{action.programmeid.programmeid}}0{{ action.actionid }}</td>
                             {% elseif action.actionid | length < 2 %}
-                                <td>{{ action.programmeid.misbudgetid.misetatid.misetatid }}{{ action.programmeid.misbudgetid.misbudgetid }}{{action.programmeid.programmeid}}0{{ action.actionid }}</td>
+                                <td class="text-center">{{ action.programmeid.misbudgetid.misetatid.misetatid }}{{ action.programmeid.misbudgetid.misbudgetid }}{{action.programmeid.programmeid}}0{{ action.actionid }}</td>
                             {% else %}
-                                <td>{{ action.programmeid.misbudgetid.misetatid.misetatid }}{{ action.programmeid.misbudgetid.misbudgetid }}{{action.programmeid.programmeid}}{{ action.actionid }}</td>
+                                <td class="text-center">{{ action.programmeid.misbudgetid.misetatid.misetatid }}{{ action.programmeid.misbudgetid.misbudgetid }}{{action.programmeid.programmeid}}{{ action.actionid }}</td>
                             {% endif %}
-                                <td>{{ action.actioncode }}</td>
-                                <td>{{ action.libaction }}</td>
-                                <td>{{ action.programmeid }}</td>
+                                <td class="text-center">{{ action.actioncode }}</td>
+                                <td class="text-center">{{ action.libaction }}</td>
+                                <td class="text-center">{{ action.programmeid }}</td>
                                 {# <td>{{action.actionid}}{{action.programmeid}}</td> #}
-                                <td>
-                                    <a href="{{ path('action_show', {'actionid': action.actionid}) }}" class="btn btn-info btn-sm"><i class="fa fa-eye"></i>Afficher</a>
-                                    <a href="{{ path('action_edit', {'actionid': action.actionid}) }}"class="btn btn-warning btn-sm"><i class="fa fa-edit"></i>Modifier</a>
-                                    <a href="{{ path('action_delete', {'actionid': action.actionid}) }}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i>Supprimer</a>
+                                <td class="text-center">
+                                {# class="btn btn-info btn-sm" #}
+                                {# class="btn btn-warning btn-sm" #}
+                                {# class="btn btn-danger btn-sm" #}
+                                    <a href="{{ path('action_show', {'actionid': action.actionid}) }}"><i class="fa fa-eye"></i></a>
+                                    <a href="{{ path('action_edit', {'actionid': action.actionid}) }}"><i class="far fa-edit"></i></a>
+                                    <a href="{{ path('action_delete', {'actionid': action.actionid}) }}"><i class="fa fa-trash"></i></a>
                                 </td>
                                 
                             </tr>
