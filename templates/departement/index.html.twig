@@ -2,44 +2,46 @@
 
 {% block title %}Département{% endblock %}
 
-{% block body %}
+{% block body %}<br>
 <div class="row">
     <div class="col-12">
         <div class="card">
-            <div class="card-header">
-                <h1 class="text-center">Département</h1>
+            <div class="card-header" style="background: #FFE4C4;">
+                <h4>Les Départements déja enregistrer</h4>
+            </div><br>
+            <div>
                 <a href="{{ path('departement_new') }}" class="btn btn-primary btn-sm">Ajouter</a>
-            </div>
+            </div><br>
             <div class="card-body table-responsive p-0" style="height: 300px;">
-                <table class="table table-head-fixed text-nowrap">
-                    <thead>
+                <table class="table table-head-fixed text-nowrap align-items-center">
+                    <thead class="floating-header entete" style="background: #C0C0C0;">
                         <tr>
                             <th class="text-center">N°</th>
                             <th class="text-center">Libelé du département</th>
                             <th class="text-center">Code du département</th>
                             <th class="text-center">Région</th>
-                            <th class="text-center">Actions</th>
+                            <th class="text-center">Opérations</th>
                         </tr>
                     </thead>
                     <tbody>
                     {% for departement in departements %}
                         <tr>
                             {% if departement.regionid.regionid | length < 2 and departement.depid | length < 2 %}
-                                <td>0{{ departement.regionid.regionid }}0{{ departement.depid }}</td>
+                                <td class="text-center">0{{ departement.regionid.regionid }}0{{ departement.depid }}</td>
                             {% elseif departement.depid | length < 2 %}
-                                <td>{{ departement.regionid.regionid }}0{{ departement.depid }}</td>
+                                <td class="text-center">{{ departement.regionid.regionid }}0{{ departement.depid }}</td>
                             {% elseif departement.regionid.regionid | length < 2 %}
-                                <td>0{{ departement.regionid.regionid }}{{ departement.depid }}</td>
+                                <td class="text-center">0{{ departement.regionid.regionid }}{{ departement.depid }}</td>
                             {% else %}
-                                <td>{{ departement.regionid.regionid }}{{ departement.depid }}</td>
+                                <td class="text-center">{{ departement.regionid.regionid }}{{ departement.depid }}</td>
                             {% endif %}
-                            <td>{{ departement.libdep }}</td>
-                            <td>{{ departement.depcode }}</td>
-                            <td>{{ departement.regionid }}</td>
-                            <td>
-                                <a href="{{ path('departement_show', {'depid': departement.depid}) }}" class="btn btn-info btn-sm"><i class="fa fa-eye"></i>Afficher</a>
-                                <a href="{{ path('departement_edit', {'depid': departement.depid}) }}" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i>Modifier</a>
-                                <a href="{{ path('departement_delete', {'depid': departement.depid}) }}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i>Supprimer</a>
+                            <td class="text-center">{{ departement.libdep }}</td>
+                            <td class="text-center">{{ departement.depcode }}</td>
+                            <td class="text-center">{{ departement.regionid }}</td>
+                            <td class="text-center">
+                                <a href="{{ path('departement_show', {'depid': departement.depid}) }}"><i class="fa fa-eye"></i></a>
+                                <a href="{{ path('departement_edit', {'depid': departement.depid}) }}"><i class="fa fa-edit"></i></a>
+                                <a href="{{ path('departement_delete', {'depid': departement.depid}) }}"><i class="fa fa-trash"></i></a>
                             </td>
                         </tr>
                     {% else %}

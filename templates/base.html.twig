@@ -23,18 +23,31 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
         {# fixed-top #}
         <div class="container-fluid">
-            {# <a class="navbar-brand" href="#">Navbar</a> #}
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="{{ path('home') }}">Accueil</a>
-                </li>
+                {# <img alt="image" src="image/ministère.png" style="height: 150px; width: 999px;"> #}
                 {# <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
+                <div class="d-flex justify-content-center align-items-center h-100"> 
+                <li> 
+                    <a href="{{ path('app_login') }}">
+                        <button class="btn btn-primary mb-2">Connexion</button>     
+                    </a>
+                </li>
+                <li> 
+                    <a href="{{ path('app_register') }}">
+                        <button class="btn btn-primary mb-2">s'inscrire</button>
+                    </a>
+                </li> 
+                </div>
+                </li>    #}
+                {# <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{{ path('home') }}">Accueil</a>
                 </li> #}
+                {% if app.user %}
+                <li><img src="image/ministère.png" height="30px" width="30px" /></li>
                 <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Tables Budgétaires
@@ -64,8 +77,6 @@
                     <li><a class="dropdown-item" aria-current="page" href="{{ path('typeservice_index') }}">Type de service</a></li>
                     <li><a class="dropdown-item" aria-current="page" href="{{ path('typeunite_index') }}">Type d'unité</a></li>
                     <li><a class="dropdown-item" aria-current="page" href="{{ path('uniteadmin_index') }}">Unité Administrative</a></li> 
-                    {# <li><hr class="dropdown-divider"></li> #}
-                    {# <li><a class="dropdown-item" href="#">Something else here</a></li> #}
                 </ul>
                 </li>
                 <li class="nav-item dropdown">
@@ -75,8 +86,6 @@
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <li><a class="dropdown-item" aria-current="page" href="{{ path('demande_engagement_index') }}">Demande d'engagement</a></li>
                     <li><a class="dropdown-item" aria-current="page" href="{{ path('engagement_index') }}">Engagement</a></li>
-                    {# <li><hr class="dropdown-divider"></li> #}
-                    {# <li><a class="dropdown-item" href="#">Something else here</a></li> #}
                 </ul>
                 </li>
                 <li class="nav-item dropdown">
@@ -87,25 +96,166 @@
                     <li><a class="dropdown-item" aria-current="page" href="{{ path('mandat_index') }}">Mandatement</a></li>
                     <li><a class="dropdown-item" aria-current="page" href="{{ path('piece_justificative_index') }}">Pièce Justificative</a></li>
                     <li><a class="dropdown-item" aria-current="page" href="{{ path('projet_mandat_index') }}">Projet de Mandatement</a></li>
-                    {# <li><hr class="dropdown-divider"></li> #}
-                    {# <li><a class="dropdown-item" href="#">Something else here</a></li> #}
                 </ul>
                 </li>
-                <li class="nav-item">
-                {# <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a> #}
-                </li>
-                </ul>
-                </li>
-            <form class="d-flex">
+                {% endif %}
+                
+                {# <li class="pull-right">
+                    <a href="{{ path('app_login') }}">
+                    <button class="btn btn-primary mb-2">
+                        Connexion
+                    </button>
+                    </a>
+                    <a href="{{ path('app_register') }}">
+                    <button class="btn btn-primary mb-2">
+                        s'inscrire
+                    </button>
+                    </a>
+                </li>  #}
+                {# <li class="mr-3">
+                    <a class="inline-block border border-white rounded hover:border-gray-200 text-blue-500 hover:bg-gray-200 py-2 px-4" href="{{ path('app_register') }}">
+                    <button class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+                        Incription
+                    </button>
+                    </a>
+                </li> #}
+            {# <form class="d-flex">
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
+            </form> #}
             </div>
         </div>
         </nav>
     </head>
     <body>
-    
-        {% block body %}{% endblock %}
+        {% block body %}
+            <div>
+            </div>
+        {% endblock %}
     </body>
+    {# <!-- Footer -->
+        <footer class="bg-dark text-center text-white">
+        <!-- Section: Social media -->
+        <section
+            class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom"
+        >
+            <!-- Left -->
+            <div class="me-5 d-none d-lg-block">
+            <span>Connectez-vous avec nous sur les réseaux sociaux:</span>
+            </div>
+            <!-- Left -->
+
+            <!-- Right -->
+            <div>
+            <a href="" class="me-4 text-reset">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="" class="me-4 text-reset">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a href="" class="me-4 text-reset">
+                <i class="fab fa-google"></i>
+            </a>
+            <a href="" class="me-4 text-reset">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="" class="me-4 text-reset">
+                <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="" class="me-4 text-reset">
+                <i class="fab fa-github"></i>
+            </a>
+            </div>
+            <!-- Right -->
+        </section>
+        <!-- Section: Social media -->
+
+        <!-- Section: Links  -->
+        <section class="">
+            <div class="container text-center text-md-start mt-5">
+            <!-- Grid row -->
+            <div class="row mt-3">
+                <!-- Grid column -->
+                <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                <!-- Content -->
+                <h6 class="text-uppercase fw-bold mb-4">
+                    <i class="fas fa-gem me-3"></i>DIRECTION GÉNÉRALE DU BUDGET
+                </h6>
+                <p>
+                    Pour une meilleure gouvernance des finances publiques
+                </p>
+                </div>
+                <!-- Grid column -->
+
+                <!-- Grid column -->
+                <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                <!-- Links -->
+                <h6 class="text-uppercase fw-bold mb-4">
+                    Produits
+                </h6>
+                <p>
+                    Budget citoyen
+                </p>
+                <p>
+                    Rapport
+                </p>
+                <p>
+                    Citoyennes
+                </p>
+                <p>
+                    La DGB
+                </p>
+                </div>
+                <!-- Grid column -->
+
+                <!-- Grid column -->
+                <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                <!-- Links -->
+                <h6 class="text-uppercase fw-bold mb-4">
+                    LIENS UTILES
+                </h6>
+                <p>
+                    Prisée
+                </p>
+                <p>
+                    Paramètres
+                </p>
+                <p>
+                    Ordres
+                </p>
+                <p>
+                    Aide
+                </p>
+                </div>
+                <!-- Grid column -->
+
+                <!-- Grid column -->
+                <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                <!-- Links -->
+                <h6 class="text-uppercase fw-bold mb-4">
+                    Contact
+                </h6>
+                <p><i class="fas fa-home me-3"></i> République du Bénin </p>
+                <p>
+                    <i class="fas fa-envelope me-3"></i>
+                    info@example.com
+                </p>
+                <p><i class="fas fa-phone me-3"></i>+ 229 21 30 09 07</p>
+                <p><i class="fas fa-print me-3"></i>+ 229 21 30 85 31</p>
+                </div>
+                <!-- Grid column -->
+            </div>
+            <!-- Grid row -->
+            </div>
+        </section>
+        <!-- Section: Links  -->
+
+        <!-- Copyright -->
+        <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+            © 2021 Copyright
+            {# <a class="text-reset fw-bold" href="https://mdbootstrap.com/">Tous Droits Reservés</a> #}
+        {# </div> #}
+        <!-- Copyright -->
+        {# </footer> #}
+        <!-- Footer --> 
 </html>

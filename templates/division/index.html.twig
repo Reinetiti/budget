@@ -2,34 +2,36 @@
 
 {% block title %}Division{% endblock %}
 
-{% block body %}
+{% block body %}<br>
 <div class="row">
     <div class="col-12">
         <div class="card">
-            <div class="card-header">
-                <h1 class="text-center">Division</h1>
+            <div class="card-header" style="background: #FFE4C4;">
+                <h4>Les Divisions déja enregistrer</h4>
+            </div><br>
+            <div>
                 <a href="{{ path('division_new') }}" class="btn btn-primary btn-sm">Ajouter</a>
-            </div>
+            </div><br>
             <div class="card-body table-responsive p-0" style="height: 300px;">
                 <table class="table table-head-fixed text-nowrap">
-                    <thead>
+                    <thead class="floating-header entete" style="background: #C0C0C0;">
                         <tr>
-                            <th>N°</th>
-                            <th>Libelé de la division</th>
-                            <th>Code de la division</th>
-                            <th>Actions</th>
+                            <th class="text-center">N°</th>
+                            <th class="text-center">Libelé de la division</th>
+                            <th class="text-center">Code de la division</th>
+                            <th class="text-center">Opérations</th>
                         </tr>
                     </thead>
                     <tbody>
                     {% for division in divisions %}
                         <tr>
-                            {# {% if division.divisionid | length < 2 %}
-                                <td>0{{ division.divisionid }}</td>
+                            {% if division.divisionid | length < 2 %}
+                                <td class="text-center">0{{ division.divisionid }}</td>
                             {% else %}
-                                <td>{{ division.divisionid }}</td>
-                            {% endif %} #}
+                                <td class="text-center">{{ division.divisionid }}</td>
+                            {% endif %}
                             
-                            {% division.divisionid | length = int %}
+                            {# {% division.divisionid | length = int %}
                             {% switch  int %}
                             
                                 {% case "int < 3" %}
@@ -41,14 +43,14 @@
                                 {% default %}
                                 
                             
-                            {% endswitch %}
+                            {% endswitch %} #}
                             
-                            <td>{{ division.libdivision }}</td>
-                            <td>{{ division.divisioncode }}</td>
-                            <td>
-                                <a href="{{ path('division_show', {'divisionid': division.divisionid}) }}" class="btn btn-info btn-sm"><i class="fa fa-eye"></i>Afficher</a>
-                                <a href="{{ path('division_edit', {'divisionid': division.divisionid}) }}" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i>Modifier</a>
-                                <a href="{{ path('division_delete', {'divisionid': division.divisionid}) }}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i>Supprimer</a>
+                            <td class="text-center">{{ division.libdivision }}</td>
+                            <td class="text-center">{{ division.divisioncode }}</td>
+                            <td class="text-center">
+                                <a href="{{ path('division_show', {'divisionid': division.divisionid}) }}"><i class="fa fa-eye"></i></a>
+                                <a href="{{ path('division_edit', {'divisionid': division.divisionid}) }}"><i class="fa fa-edit"></i></a>
+                                <a href="{{ path('division_delete', {'divisionid': division.divisionid}) }}"><i class="fa fa-trash"></i></a>
                             </td>
                         </tr>
                     {% else %}

@@ -2,41 +2,43 @@
 
 {% block title %}Catégorie de service{% endblock %}
 
-{% block body %}
+{% block body %}<br>
 <div class="row">
     <div class="col-12">
         <div class="card">
-            <div class="card-header">
-                <h1 class="text-center">Catégorie de service</h1>
+            <div class="card-header" style="background: #FFE4C4;">
+                <h4>Les Catégories de service déja enregistrer</h4>
+            </div><br>
+            <div>
                 <a href="{{ path('catservice_new') }}" class="btn btn-primary btn-sm">Ajouter</a>
-            </div>
+            </div><br>
             <div class="card-body table-responsive p-0" style="height: 300px;">
-                <table class="table table-head-fixed text-nowrap">
-                    <thead>
+                <table class="table table-head-fixed text-nowrap align-items-center">
+                    <thead class="floating-header entete" style="background: #C0C0C0;">
                         <tr>
                             <th class="text-center">N°</th>
                             <th class="text-center">Libelé de la Catégorie de Service</th>
                             <th class="text-center">Code Libelé de la Catégorie de Service</th>
                             <th class="text-center">Type Unité</th>
-                            <th class="text-center">Actions</th>
+                            <th class="text-center">Opérations</th>
                         </tr>
                     </thead>
                     <tbody>
                     {% for catservice in catservices %}
                         <tr>
                             {% if catservice.typeid.typeid | length < 2 %}
-                                <td>{{ catservice.catid }}0{{ catservice.typeid.typeid }}</td>
+                                <td class="text-center">{{ catservice.catid }}0{{ catservice.typeid.typeid }}</td>
                             {% else %}
-                                <td>{{ catservice.catid }}{{ catservice.typeid.typeid }}</td>
+                                <td class="text-center">{{ catservice.catid }}{{ catservice.typeid.typeid }}</td>
                             {% endif %}
                             {# <td>{{ catservice.catid }}{{ catservice.typeid.typeid }}</td> #}
-                            <td>{{ catservice.libcat }}</td>
-                            <td>{{ catservice.catcode }}</td>
-                            <td>{{ catservice.typeid }}</td>
-                            <td>
-                                <a href="{{ path('catservice_show', {'catid': catservice.catid}) }}" class="btn btn-info btn-sm"><i class="fa fa-eye"></i>afficher</a>
-                                <a href="{{ path('catservice_edit', {'catid': catservice.catid}) }}" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i>modifier</a>
-                                <a href="{{ path('catservice_delete', {'catid': catservice.catid}) }}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i>Supprimer</a>
+                            <td class="text-center">{{ catservice.libcat }}</td>
+                            <td class="text-center">{{ catservice.catcode }}</td>
+                            <td class="text-center">{{ catservice.typeid }}</td>
+                            <td class="text-center">
+                                <a href="{{ path('catservice_show', {'catid': catservice.catid}) }}"><i class="fa fa-eye"></i></a>
+                                <a href="{{ path('catservice_edit', {'catid': catservice.catid}) }}"><i class="fa fa-edit"></i></a>
+                                <a href="{{ path('catservice_delete', {'catid': catservice.catid}) }}"><i class="fa fa-trash"></i></a>
                             </td>
                         </tr>
                     {% else %}

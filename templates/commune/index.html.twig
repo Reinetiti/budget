@@ -2,44 +2,46 @@
 
 {% block title %}Commune{% endblock %}
 
-{% block body %}
+{% block body %}<br>
 <div class="row">
     <div class="col-12">
         <div class="card">
-            <div class="card-header">
-                <h1 class="text-center">Commune</h1>
+            <div class="card-header" style="background: #FFE4C4;">
+                <h4>Les Communes déja enregistrer</h4>
+            </div><br>
+            <div>
                 <a href="{{ path('commune_new') }}" class="btn btn-primary btn-sm">Ajouter</a>
-            </div>
+            </div><br>
             <div class="card-body table-responsive p-0" style="height: 300px;">
-                <table class="table table-head-fixed text-nowrap">
-                    <thead>
+                <table class="table table-head-fixed text-nowrap align-items-center">
+                    <thead class="floating-header entete" style="background: #C0C0C0;">
                         <tr>
-                            <th>N°</th>
-                            <th>Libelé de la commune</th>
-                            <th>Code de la commune</th>
-                            <th>Département</th>
-                            <th>Actions</th>
+                            <th class="text-center">N°</th>
+                            <th class="text-center">Libelé de la commune</th>
+                            <th class="text-center">Code de la commune</th>
+                            <th class="text-center">Département</th>
+                            <th class="text-center">Opérations</th>
                         </tr>
                     </thead>
                     <tbody>
                     {% for commune in communes %}
                         <tr>
                             {% if commune.depid.regionid.regionid | length < 2 and commune.depid.depid | length < 2 and commune.communeid | length < 2 %}
-                                <td>0{{ commune.depid.regionid.regionid }}0{{ commune.depid.depid }}0{{ commune.communeid }}</td>
+                                <td class="text-center">0{{ commune.depid.regionid.regionid }}0{{ commune.depid.depid }}0{{ commune.communeid }}</td>
                             {% elseif commune.depid.depid | length < 2 and commune.communeid | length < 2 %}
-                                <td>{{ commune.depid.regionid.regionid }}0{{ commune.depid.depid }}0{{ commune.communeid }}</td>
+                                <td class="text-center">{{ commune.depid.regionid.regionid }}0{{ commune.depid.depid }}0{{ commune.communeid }}</td>
                             {% elseif commune.communeid | length < 2 %}
-                                <td>{{ commune.depid.regionid.regionid }}{{ commune.depid.depid }}0{{ commune.communeid }}</td>
+                                <td class="text-center">{{ commune.depid.regionid.regionid }}{{ commune.depid.depid }}0{{ commune.communeid }}</td>
                             {% else %}
-                                <td>{{ commune.depid.regionid.regionid }}{{ commune.depid.depid }}{{ commune.communeid }}</td>
+                                <td class="text-center">{{ commune.depid.regionid.regionid }}{{ commune.depid.depid }}{{ commune.communeid }}</td>
                             {% endif %}
-                            <td>{{ commune.libcommune }}</td>
-                            <td>{{ commune.communecode }}</td>
-                            <td>{{ commune.depid }}</td>
-                            <td>
-                                <a href="{{ path('commune_show', {'communeid': commune.communeid}) }}" class="btn btn-info btn-sm"><i class="fa fa-eye"></i>Afficher</a>
-                                <a href="{{ path('commune_edit', {'communeid': commune.communeid}) }}" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i>Modifier</a>
-                                <a href="{{ path('commune_delete', {'communeid': commune.communeid}) }}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i>Supprimer</a>
+                            <td class="text-center">{{ commune.libcommune }}</td>
+                            <td class="text-center">{{ commune.communecode }}</td>
+                            <td class="text-center">{{ commune.depid }}</td>
+                            <td class="text-center">
+                                <a href="{{ path('commune_show', {'communeid': commune.communeid}) }}"><i class="fa fa-eye"></i></a>
+                                <a href="{{ path('commune_edit', {'communeid': commune.communeid}) }}"><i class="fa fa-edit"></i></a>
+                                <a href="{{ path('commune_delete', {'communeid': commune.communeid}) }}"><i class="fa fa-trash"></i></a>
                             </td>
                         </tr>
                     {% else %}

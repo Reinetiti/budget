@@ -2,17 +2,19 @@
 
 {% block title %}Champ de compétence{% endblock %}
 
-{% block body %}
+{% block body %}<br>
 <div class="row">
     <div class="col-12">
         <div class="card">
-            <div class="card-header">
-                <h1 class="text-center">Champ de compétence</h1>
+            <div class="card-header" style="background: #FFE4C4;">
+                <h4>Les Champ de compétences déja enregistrer</h4>
+            </div><br>
+            <div>
                 <a href="{{ path('champcompetence_new') }}" class="btn btn-primary btn-sm">Ajouter</a>
-            </div>
+            </div><br>
             <div class="card-body table-responsive p-0" style="height: 300px;">
-                <table class="table table-head-fixed text-nowrap">
-                    <thead>
+                <table class="table table-head-fixed text-nowrap align-items-center">
+                    <thead class="floating-header entete" style="background: #C0C0C0;">
                         <tr>
                             <th class="text-center">N°</th>
                             <th class="text-center">Libelé du champ de compétence</th>
@@ -25,22 +27,22 @@
                     {% for champcompetence in champcompetences %}
                         <tr>
                             {% if champcompetence.communeid.depid.regionid.regionid | length < 2 and champcompetence.communeid.depid.depid | length < 2 and champcompetence.communeid.communeid | length < 2 %}
-                                <td>{{ champcompetence.competenceid }}0{{ champcompetence.communeid.depid.regionid.regionid }}0{{ champcompetence.communeid.depid.depid }}0{{ champcompetence.communeid.communeid }}</td>
+                                <td class="text-center">{{ champcompetence.competenceid }}0{{ champcompetence.communeid.depid.regionid.regionid }}0{{ champcompetence.communeid.depid.depid }}0{{ champcompetence.communeid.communeid }}</td>
                             {% elseif champcompetence.communeid.depid.depid | length < 2 and champcompetence.communeid.communeid | length < 2 %}
-                                <td>{{ champcompetence.competenceid }}{{ champcompetence.communeid.depid.regionid.regionid }}0{{ champcompetence.communeid.depid.depid }}0{{ champcompetence.communeid.communeid }}</td>
+                                <td class="text-center">{{ champcompetence.competenceid }}{{ champcompetence.communeid.depid.regionid.regionid }}0{{ champcompetence.communeid.depid.depid }}0{{ champcompetence.communeid.communeid }}</td>
                             {% elseif champcompetence.communeid.communeid | length < 2 %}
-                                <td>{{ champcompetence.competenceid }}{{ champcompetence.communeid.depid.regionid.regionid }}{{ champcompetence.communeid.depid.depid }}0{{ champcompetence.communeid.communeid }}</td>
+                                <td class="text-center">{{ champcompetence.competenceid }}{{ champcompetence.communeid.depid.regionid.regionid }}{{ champcompetence.communeid.depid.depid }}0{{ champcompetence.communeid.communeid }}</td>
                             {% else %}
-                                <td>{{ champcompetence.competenceid }}{{ champcompetence.communeid.depid.regionid.regionid }}{{ champcompetence.communeid.depid.depid }}{{ champcompetence.communeid.communeid }}</td>
+                                <td class="text-center">{{ champcompetence.competenceid }}{{ champcompetence.communeid.depid.regionid.regionid }}{{ champcompetence.communeid.depid.depid }}{{ champcompetence.communeid.communeid }}</td>
                             {% endif %}
                             {# <td>{{ champcompetence.competenceid }}</td> #}
-                            <td>{{ champcompetence.libcompetence }}</td>
-                            <td>{{ champcompetence.competencecode }}</td>
-                            <td>{{ champcompetence.communeid }}</td> 
-                            <td>
-                                <a href="{{ path('champcompetence_show', {'competenceid': champcompetence.competenceid}) }}" class="btn btn-info btn-sm"><i class="fa fa-eye"></i>Afficher</a>
-                                <a href="{{ path('champcompetence_edit', {'competenceid': champcompetence.competenceid}) }}" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i>Modifier</a>
-                                <a href="{{ path('champcompetence_delete', {'competenceid': champcompetence.competenceid}) }}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i>Supprimer</a>
+                            <td class="text-center">{{ champcompetence.libcompetence }}</td>
+                            <td class="text-center">{{ champcompetence.competencecode }}</td>
+                            <td class="text-center">{{ champcompetence.communeid }}</td> 
+                            <td class="text-center">
+                                <a href="{{ path('champcompetence_show', {'competenceid': champcompetence.competenceid}) }}"><i class="fa fa-eye"></i></a>
+                                <a href="{{ path('champcompetence_edit', {'competenceid': champcompetence.competenceid}) }}"><i class="fa fa-edit"></i></a>
+                                <a href="{{ path('champcompetence_delete', {'competenceid': champcompetence.competenceid}) }}"><i class="fa fa-trash"></i></a>
                             </td>
                         </tr>
                     {% else %}

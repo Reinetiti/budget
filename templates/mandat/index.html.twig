@@ -2,34 +2,36 @@
 
 {% block title %}Mandatement{% endblock %}
 
-{% block body %}
+{% block body %}<br>
 <div class="row">
     <div class="col-12">
         <div class="card">
-            <div class="card-header">
-                <h1 class="text-center">Mandatement</h1>
+            <div class="card-header" style="background: #FFE4C4;">
+                <h4>Les Mandatements déja en</h4>
+            </div><br>
+            <div>
                 <a href="{{ path('mandat_new') }}" class="btn btn-primary btn-sm">Ajouter</a>
-            </div>
+            </div><br>
             <div class="card-body table-responsive p-0" style="height: 300px;">
-                <table class="table">
-                    <thead>
+                <table class="table table-head-fixed text-nowrap align-items-center">
+                    <thead class="floating-header entete" style="background: #C0C0C0;">
                         <tr>
-                            <th>N°</th>
-                            <th>Montant Mandat</th>
-                            <th>N° projet de mandatement</th>
-                            <th>Actions</th>
+                            <th class="text-center">N°</th>
+                            <th class="text-center">Montant Mandat</th>
+                            <th class="text-center">N° projet de mandatement</th>
+                            <th class="text-center">Opérations</th>
                         </tr>
                     </thead>
                     <tbody>
                     {% for mandat in mandats %}
                         <tr>
-                            <td>{{ mandat.numMandat }}</td>
-                            <td>{{ mandat.montantMandat }}</td>
-                            <td>{{ mandat.numProjet }}</td>
-                            <td>
-                                <a href="{{ path('mandat_show', {'numMandat': mandat.numMandat}) }}" class="btn btn-info btn-sm"><i class="fa fa-eye"></i>Afficher</a>
-                                <a href="{{ path('mandat_edit', {'numMandat': mandat.numMandat}) }}" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i>Modifier</a>
-                                <a href="{{ path('mandat_delete', {'numMandat': mandat.numMandat}) }}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i>Supprimer</a>
+                            <td class="text-center">{{ mandat.numMandat }}</td>
+                            <td class="text-center">{{ mandat.montantMandat }}</td>
+                            <td class="text-center">{{ mandat.numProjet }}</td>
+                            <td class="text-center">
+                                <a href="{{ path('mandat_show', {'numMandat': mandat.numMandat}) }}"><i class="fa fa-eye"></i></a>
+                                <a href="{{ path('mandat_edit', {'numMandat': mandat.numMandat}) }}"><i class="fa fa-edit"></i></a>
+                                <a href="{{ path('mandat_delete', {'numMandat': mandat.numMandat}) }}"><i class="fa fa-trash"></i></a>
                             </td>
                         </tr>
                     {% else %}
